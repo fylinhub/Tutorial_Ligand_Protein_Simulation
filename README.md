@@ -1,64 +1,64 @@
-Tutorial for Ligand-Protein simulation 
-  This is a basic and simple tutorial to setup a ligand-protein system for NAMD simulation; all you need to do is to utilize the scripts obtained from CHARMM-GUI (whatever the system contains a halogenated ligand or not, the way to build up the system is the same). 
-  In this example, one of an easiest way to build the ligand-protein system will be introduced, that is:
-  1) use CHARMM-GUI to build the protein, and then 
-  2) modify the script to add the ligand or ions. 
-  The scripts for Drude will be illustrated in the following, while the scripts for the additive are used in a similar approach, and thus not are described here.
+Tutorial for Ligand-Protein simulation  <br>
+  This is a basic and simple tutorial to setup a ligand-protein system for NAMD simulation; all you need to do is to utilize the scripts obtained from CHARMM-GUI (whatever the system contains a halogenated ligand or not, the way to build up the system is the same).   <br>
+  In this example, one of an easiest way to build the ligand-protein system will be introduced, that is:  <br>
+  1) use CHARMM-GUI to build the protein, and then   <br>
+  2) modify the script to add the ligand or ions.   <br>
+  The scripts for Drude will be illustrated in the following, while the scripts for the additive are used in a similar approach, and thus not are described here.  <br>
 
-Folders:
-	Input scripts for Drude simulations are inside the "4tutorial_drude" folder.
-	Input scripts for Additive simulations are inside the "4tutorial_additive" folder.
+Folders:  <br>
+	Input scripts for Drude simulations are inside the "4tutorial_drude" folder.  <br>
+	Input scripts for Additive simulations are inside the "4tutorial_additive" folder.  <br>
 
-[ 4tutorial_drude ]
+[ 4tutorial_drude ]  <br>
 	Before using the scripts in this folder, you need to generate structures from CHARMM-GUI.
-# 0. Basic usage in CHARMM-GUI
+# 0. Basic usage in CHARMM-GUI  <br>
 0-1. Use CHARMM-GUI Solvator to generate protein additive formats (e.g. *psf, *crd, *pdb ) <br>
 0-2. Use CHARMM-GUI Drude Prepper to build the protein in Drude formats. <br>
 
-Once the those files are generated from CHARMM-GUI, go to setup-system folder.
+Once the those files are generated from CHARMM-GUI, go to setup-system folder.  <br>
 
-# 1. Setup-system
-# ----------------------------------------
-The setup_system folder includes the following script 
-(these scripts are just minor adaptions from charmm-gui's additive scripts; the adaptions include adding "setup warn drude dmass 0.4", "coor sdrude", "coor shake" and change TIP3 to SWM4 these type of commands):
-step3.0_patch.inp 
-step4.1_waterbox.inp 
-step4.2_ions.inp 
-step4_solvator.inp 
-step5_pbcsetup.inp
+# 1. Setup-system  <br>
+# ----------------------------------------  <br>
+The setup_system folder includes the following script <br>
+(these scripts are just minor adaptions from charmm-gui's additive scripts; the adaptions include adding "setup warn drude dmass 0.4", "coor sdrude", "coor shake" and change TIP3 to SWM4 these type of commands):  <br>
+step3.0_patch.inp  <br>
+step4.1_waterbox.inp   <br>
+step4.2_ions.inp   <br>
+step4_solvator.inp   <br>
+step5_pbcsetup.inp  <br>
 
-[Note 1]: User only need to change the step3.0_patch.inp to add their ligand.
-For example :
-read sequence 22U 1 
-generate 22U first none last none setup warn drude dmass 0.4 
-OPEN UNIT 1 CARD READ NAME @in/crys_22u_h.pdb 
-READ coor pdb UNIT 1 append 
-close unit 1 
+[Note 1]: User only need to change the step3.0_patch.inp to add their ligand.  <br>
+For example :  <br>
+read sequence 22U 1   <br>
+generate 22U first none last none setup warn drude dmass 0.4  <br>
+OPEN UNIT 1 CARD READ NAME @in/crys_22u_h.pdb  <br>
+READ coor pdb UNIT 1 append  <br>
+close unit 1  <br>
 
-[Note 2]: User needs to build their ligand and its toppar stream file; in my case, I built them manually. Note that urrently the bond information for Lonepair is required for NAMD (see toppar/toppar_22u.str)
+[Note 2]: User needs to build their ligand and its toppar stream file; in my case, I built them manually. Note that urrently the bond information for Lonepair is required for NAMD (see toppar/toppar_22u.str) <br>
 
-[Note 3]: The dimension of the boxsize will be written in step4.1_waterbox.prm
-If you want to use the cubic box size:
-Please use the following commands in step4.1_waterbox.inp
-calc Xinit = @Lbox 
-calc Yinit = @Lbox 
-calc Zinit = @Lbox 
+[Note 3]: The dimension of the boxsize will be written in step4.1_waterbox.prm  <br>
+If you want to use the cubic box size:  <br>
+Please use the following commands in step4.1_waterbox.inp  <br>
+calc Xinit = @Lbox   <br>
+calc Yinit = @Lbox   <br>
+calc Zinit = @Lbox   <br>
 
 To setup systems, just run the above step3.0~step5.inp sequentially. Once the those files are prepared, go to run_namd folder.
 
-# 2. Run with NAMD 
-# ----------------------------------------
-The step5_pbcsetup.psf and step5_pbcsetup.pdb generated from the setup-system will be used for NAMD. 
+# 2. Run with NAMD   <br>
+# ----------------------------------------  <br>
+The step5_pbcsetup.psf and step5_pbcsetup.pdb generated from the setup-system will be used for NAMD.   <br>
 
-In run_namd folder, this includes two namd configuration files, which assigned the parameters used for NAMD:
-equil.in (for equilibration)
-prod.in (for production)
-
+In run_namd folder, this includes two namd configuration files, which assigned the parameters used for NAMD: <br>
+equil.in (for equilibration) <br>
+prod.in (for production)  <br>
+ 
 [Note 4] The equil_restrain.pdb, prod_restrain_ca.pdb are the restrained used for this systems, uses could change according to their systems. Besides, the number of steps used in this tutorial are also small, users may need to extend them.
 
-[ 4tutorial_additive ]
-The additive files are prepared in the similar approach. Please refer to 4tutorial_additive folder. 
-Note 1: The ligand's toppar stream file was generated by CGenFF. (see add_toppar/22u_lp_namd.str; the bond information for Lonepair is required for NAMD for older version, while with latest version there is no this issue) 
-Note 2: If the input pdb does not include the lonepair (ex: input/crys_22u_h.pdb), you need to add "coor shake" in step3.1. 
+[ 4tutorial_additive ]  <br>
+The additive files are prepared in the similar approach. Please refer to 4tutorial_additive folder.   <br>
+Note 1: The ligand's toppar stream file was generated by CGenFF. (see add_toppar/22u_lp_namd.str; the bond information for Lonepair is required for NAMD for older version, while with latest version there is no this issue)   <br>
+Note 2: If the input pdb does not include the lonepair (ex: input/crys_22u_h.pdb), you need to add "coor shake" in step3.1.  <br>
 
 
