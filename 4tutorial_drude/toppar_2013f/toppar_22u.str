@@ -1,0 +1,611 @@
+* Drude toppar stream file for halogenated compounds - simulation
+* For tutorial Apr 26 2019 - Fang-Yu Lin
+*
+
+!! Need to include other parameters:
+!! toppar_drude_master_protein_2013*.str
+!! toppar_drude_halogen_*.str
+!! toppar_drude_carbohydrate_2013e.str
+!! toppar_drude_model_2013e.str
+!! toppar_drude_nucleic_acid_2017a.str
+
+!ioformat extended
+
+read rtf card append
+* Topology for drude model compounds
+*
+40
+
+AUTOGENERATE ANGLES DIHEDRALS DRUDE
+
+RESI 22U  1.000      ! PDBid 2ZC9 
+!                                                                               
+!                                                                      
+!                                        H11    H52                    
+!                                         |      |          H11   H121  
+!                                     H12-C1----C5-H51       |     |    
+!                                         |      |          N11---C12
+!           HE1  HD1                      |      |         /       |  \      H31 
+!            |    |                   H21-C2    C4------C10       H122 \      | 
+!           CE1--CD1     HB1    H81      /\    /\       ||              C32---C31     
+!           /      \      |       |    H22 \  /  H41    O10             /      \    
+!      HZ--CZ      CG----CB----- C8         N3                   H33--C33      C36--CL36--LP36
+!           \      /      |       |  \      /                           \      / 
+!           CE2--CD2     HB2      |   \    /                            C34---C35
+!            |    |          H91-N9     C6                               |    | 
+!           HE2  HD2            / |+1)  ||                              H34   H35
+!                            H92 H93    O7 
+!                              
+!    
+GROUP  ! from PYOC 
+ATOM C1    CD32A   -0.141   ALPHA -1.617  THOLE 1.103  
+ATOM H11   HDA2A    0.072                             
+ATOM H12   HDA2A    0.072                             
+ATOM C2    CD32C    0.130   ALPHA -1.562  THOLE 1.103
+ATOM H21   HDA2A    0.090                            
+ATOM H22   HDA2A    0.090                            
+ATOM N3    ND2A3   -0.626   ALPHA -1.439  THOLE 1.319  
+ATOM C4    CD31C    0.220   ALPHA -1.562  THOLE 1.103  
+ATOM H41   HDA1A    0.090   
+ATOM C5    CD32A   -0.141   ALPHA -1.617  THOLE 1.103  
+ATOM H51   HDA2A    0.072                              
+ATOM H52   HDA2A    0.072                              
+GROUP  !from NTER          
+ATOM C6    CD2O1A   0.497   ALPHA -0.675  THOLE 0.295 
+ATOM O7    OD2C1A   0.000   ALPHA -0.651  THOLE 0.310 
+ATOM LPA   LPDO1   -0.312   
+ATOM LPB   LPDO1   -0.227   
+ATOM C8    CD31C    0.388   ALPHA -0.960  THOLE 1.078 ! charge adjusted to yield unit charge 
+ATOM H81   HDA1C   -0.017   
+ATOM N9    ND3P3A  -0.349   ALPHA -1.298  THOLE 0.895 
+ATOM H91   HDP1B    0.340   
+ATOM H92   HDP1B    0.340   
+ATOM H93   HDP1B    0.340   
+GROUP  ! from TOLU         
+ATOM CB    CD32A   -0.150   ALPHA -1.608  THOLE 0.438 ! charge changed  
+ATOM HB1   HDA2A    0.079   
+ATOM HB2   HDA2A    0.079   
+ATOM CG    CD2R6A   0.037   ALPHA -1.550  THOLE 1.262 
+ATOM CD1   CD2R6A  -0.087   ALPHA -1.604  THOLE 1.262 
+ATOM HD1   HDR6A    0.099   
+ATOM CD2   CD2R6A  -0.087   ALPHA -1.604  THOLE 1.262 
+ATOM HD2   HDR6A    0.099   
+ATOM CE1   CD2R6A  -0.114   ALPHA -1.606  THOLE 1.262 
+ATOM HE1   HDR6A    0.096   
+ATOM CE2   CD2R6A  -0.114   ALPHA -1.606  THOLE 1.262 
+ATOM HE2   HDR6A    0.096   
+ATOM CZ    CD2R6A  -0.133   ALPHA -1.610  THOLE 1.262 
+ATOM HZ    HDR6A    0.100 
+GROUP   ! NMA 
+ATOM C10   CD2O1A   0.685   ALPHA -1.748  THOLE 1.517 ! charge changed
+ATOM O10   OD2C1A   0.035   ALPHA -1.032  THOLE 0.915 
+ATOM LP2A  LPDO1   -0.418  
+ATOM LP2B  LPDO1   -0.256  
+ATOM N11   ND2A2   -0.585   ALPHA -1.544  THOLE 0.438 
+ATOM H111  HDP1A    0.297   
+ATOM C12   CD32C    0.160   ALPHA -1.229  THOLE 0.738 ! charge changed
+ATOM H121  HDA2A    0.041                                                          
+ATOM H122  HDA2A    0.041                                                          
+GROUP 
+ATOM C31   CD2R6A  -0.022   ALPHA -2.945  THOLE  0.660              
+ATOM H31   HDR6A    0.080                                           
+ATOM C32   CD2R6A   0.000   ALPHA -1.615  THOLE  1.195              
+ATOM C33   CD2R6A  -0.1106  ALPHA -1.615  THOLE  1.195              
+ATOM H33   HDR6A    0.1106                                          
+ATOM C34   CD2R6A  -0.1106  ALPHA -1.615  THOLE  1.195              
+ATOM H34   HDR6A    0.1106                                          
+ATOM C35   CD2R6A  -0.022   ALPHA -2.945  THOLE  0.660              
+ATOM H35   HDR6A    0.080                                           
+ATOM C36   CD2R6A   0.039   ALPHA -1.890  THOLE  0.660              
+ATOM CL36  CLDR1   -0.195   ALPHA -1.640  THOLE  0.660  TYPE DCL2   
+ATOM LP36  LPD      0.040                                             
+BOND C1    H11   C1    H12    
+BOND C2    H21   C2    H22 
+BOND C4    H41         
+BOND C5    H51   C5    H52   
+BOND N3    C2    N3    C4  
+BOND C1    C2    C1    C5    C4    C5  
+BOND C6    N3    C6    O7    C6    C8   
+BOND C8    H81   C8    N9    N9    H91 N9 H92 N9 H93 
+BOND O7    LPA   O7    LPB 
+BOND C10   N11   N11   H111  C10   O10
+BOND C10   C4  
+BOND O10   LP2A  O10   LP2B 
+IMPR C6    C8    N3    O7    
+IMPR C10   C4    N11   O10
+IMPR N11   C10   C12   H111 
+BOND CD1   CG    CD2   CG    CE1   CD1 
+BOND CE2   CD2   CZ    CE1   CZ    CE2   CG  CB 
+BOND CD1   HD1   CD2   HD2   CE1   HE1 
+BOND CE2   HE2   CZ    HZ 
+BOND CB    HB1   CB    HB2   CB    C8 
+BOND C12   C32   C12   N11
+BOND C12   H121  C12   H122
+BOND C31   C32   C32   C33   C33   C34   C34   C35   C35   C36   
+BOND C31   H31   C33   H33   C34   H34   C35   H35   C36   C31
+BOND C36   CL36  CL36  LP36
+LONEPAIR relative LPA O7 C6 C8 distance 0.30 angle 91.0 dihe 0.0 
+LONEPAIR relative LPB O7 C6 C8 distance 0.30 angle 91.0 dihe 180.0 
+ANISOTROPY O7 C6 LPA LPB  A11  0.82322 A22  1.14332 
+LONEPAIR relative LP2A O10 C10 C4 distance 0.30 angle 91.0 dihe 0.0 
+LONEPAIR relative LP2B O10 C10 C4 distance 0.30 angle 91.0 dihe 180.0 
+ANISOTROPY O10 C10 LP2A LP2B  A11  0.82322 A22  1.14332 
+!!LONEPAIR COLINEAR LP36 CL36 C36 DIST 1.640 SCALE 0.0 ! Lone pair location
+LONEPAIR relative LP36 CL36 C36 C35 distance 1.64 angle 180.0 dihe 0.0 ! for NAMD
+ANISOTROPY  CL36 C36 C31 C35 A11 1.300  A22 0.85
+PATCH FIRST NONE LAST NONE 
+IC  C5     C1    C2     N3    0.00 102.60    -38.30    99.00   0.00
+IC  C5     C2    *C1    H11   0.00   0.00   -119.90     0.00   0.00
+IC  C5     C2    *C1    H12   0.00   0.00    122.70     0.00   0.00
+IC  N3     C1    *C2    H21   0.00   0.00    118.30     0.00   0.00
+IC  N3     C1    *C2    H22   0.00   0.00   -123.90     0.00   0.00
+IC  C1     C2    N3     C6    0.00  99.00   -155.50   116.00   0.00
+IC  C1     C2    N3     C4    0.00   0.00     23.60     0.00   0.00
+IC  C5     N3    *C4    H41   0.00   0.00   -123.40     0.00   0.00
+IC  C4     C1    *C5    H51   0.00   0.00   -119.10     0.00   0.00
+IC  C4     C1    *C5    H52   0.00   0.00    122.50     0.00   0.00
+IC  C2     N3    C6     O7    0.00 118.00   -172.10   111.60   0.00
+IC  O7     N3    *C6    C8    0.00   0.00    166.30     0.00   0.00
+IC  N3     C6    C8     H81   0.00   0.00     -0.60     0.00   0.00
+IC  H81    C6    *C8    CB    0.00   0.00    118.30     0.00   0.00
+IC  H81    C6    *C8    N9    0.00   0.00   -119.80     0.00   0.00
+IC  C6     C8    N9     H91   0.00   0.00    122.90     0.00   0.00
+IC  C6     C8    N9     H92   0.00   0.00      8.00     0.00   0.00
+IC  C6     C8    N9     H93   0.00   0.00   -170.00     0.00   0.00
+IC  N3     C5    *C4    C10   0.00   0.00   -118.70     0.00   0.00
+IC  H41    C4    C10    O10   0.00   0.00   -165.60     0.00   0.00
+IC  H41    C4    C10    N11   0.00   0.00     14.00     0.00   0.00
+IC  C4     C10   N11    H111  0.00   0.00     -5.60     0.00   0.00
+IC  C4     C10   N11    C12   0.00   0.00    174.40     0.00   0.00
+IC  C10    N11   C12    H121  0.00   0.00   -122.70     0.00   0.00
+IC  C10    N11   C12    H122  0.00   0.00     -2.70     0.00   0.00
+IC  C10    N11   C12    C32   0.00   0.00    117.40     0.00   0.00
+IC  N11    C12   C32    C31   0.00   0.00     68.70     0.00   0.00
+IC  N11    C12   C32    C33   0.00   0.00   -111.80     0.00   0.00
+IC  C12    C32   C33    C34   0.00   0.00    180.00     0.00   0.00
+IC  C6     C8    CB     CG    0.00   0.00    -63.30     0.00   0.00
+IC  C6     C8    CB     HB1   0.00   0.00    176.10     0.00   0.00
+IC  C6     C8    CB     HB2   0.00   0.00     55.40     0.00   0.00
+IC  C8     CB    CG     CD1   0.00   0.00    -58.70     0.00   0.00
+IC  CB     CG    CD1    CE1   0.00   0.00   -179.40     0.00   0.00
+IC  CG     CD1   CE1    CZ    0.00   0.00      0.00     0.00   0.00
+IC  CD1    CE1   CZ     CE2   0.00   0.00      0.00     0.00   0.00
+IC  CE1    CZ    CE2    CD2   0.00   0.00      0.00     0.00   0.00
+IC  CD1    CD2   *CG    CB    0.00   0.00    180.00     0.00   0.00
+IC  CE1    CG    *CD1   HD1   0.00   0.00    180.00     0.00   0.00
+IC  CE2    CG    *CD2   HD2   0.00   0.00    180.00     0.00   0.00
+IC  CZ     CD1   *CE1   HE1   0.00   0.00    180.00     0.00   0.00
+IC  CZ     CD2   *CE2   HE2   0.00   0.00    180.00     0.00   0.00
+IC  CE1    CE2   *CZ    HZ    0.00   0.00    180.00     0.00   0.00
+IC  C31    C32   C33    C34   0.00   0.00      0.00     0.00   0.00
+IC  C32    C33   C34    C35   0.00   0.00      0.00     0.00   0.00
+IC  C33    C34   C35    C36   0.00   0.00      0.00     0.00   0.00
+IC  C32    C36   *C31   H31   0.00   0.00    180.00     0.00   0.00
+IC  C32    C34   *C33   H33   0.00   0.00    180.00     0.00   0.00
+IC  C33    C35   *C34   H34   0.00   0.00    180.00     0.00   0.00
+IC  C34    C36   *C35   H35   0.00   0.00    180.00     0.00   0.00
+IC  C35    C31   *C36   CL36  0.00   0.00    180.00     0.00   0.00
+PATC FIRS NONE LAST NONE
+
+END     
+
+read para card append
+* For halogenated ligand
+*
+
+! simulation bond 
+BONDS
+CD32A    ND2A2    215.01    1.461 ! 
+CD32A    OD30BN    35.00    1.440 ! SERP, THRP, C5'-O5', from DMP OD30B-CD33C
+CD31A    OD30BN    35.00    1.440 ! SERP, THRP, C5'-O5', from DMP OD30B-CD33C
+CD31A    CD2R6A   230.00    1.490 ! GVQ, PHE/TOLU 
+CD2O1D   CD2R6A   245.00    1.491 ! 
+CD2O1D   CD32A    245.00    1.491 ! 
+ND2A3    CD31C    307.90    1.445 ! PYOC, ALAD, alanine dipeptide   %PEML jan13 
+ND2A3    CD32C    307.90    1.445 ! PYOC, PRLD, pyrrolidine, PEML 
+CD33C    CD2R6A   230.00    1.490 ! PYOC, PHE/TOLU 
+CD2R6A   CD30A    230.00    1.490 ! TFBE, PHE/TOLU 
+CD2R6A   OD30C    245.00    1.491 ! MTY1 
+CD2R6A   CD2O3A   245.00    1.491 ! MTY1
+CD2R6A   CD2O1A   245.00    1.491 ! MTY1
+CD32C    CD2R6A   230.00    1.490 ! MTY3, PHE/TOLU 
+OD30A    CD2R6A   334.30    1.411 ! CLBE, PHEN, phenol 
+CD32A    ND2R5E   400.00    1.456 ! CLEB, Et-Gua, cmb 04/10 
+CD2R6A   CD31C    230.00    1.490 ! MTY3, PHE/TOLU 
+
+
+ANGLES
+CD32A    CD32A    ND2A2     70.00    113.00 ! PRO 
+HDA2A    CD32A    ND2A2     50.00    111.00 ! PRO 
+CD32A    ND2A2    HDP1A     64.50    119.00 ! GLYD 
+CD32A    ND2A2    CD2O1A    35.00    111.00 ! PRO 
+CD2O1A   CD31C    HDA2A     48.90    111.90 ! NTER-(X)n-CNEU 
+ND3P3A   CD31C    HDA2A     31.10    106.30   34.90  2.048 ! NTER, PEML 
+HDA2A    CD31C    HDA2A     35.50    109.00   5.40   1.802  ! alkane, 3/92 
+HDA2A    CD32A    OD30BN    60.00    109.50 ! SERP/THRP, DMP, charmm27
+CD31C    CD32A    OD30BN    75.70    110.10 ! SERP/THRP, DMP
+HDA1A    CD31A    OD30BN    60.00    109.50 ! SERP/THRP, DMP, charmm27
+CD31C    CD31A    OD30BN    75.70    110.10 ! SERP/THRP, DMP
+OD30BN   CD31A    CD33A     75.70    110.10 ! SERP/THRP, DMP
+CD31A    OD30BN   PD1AN     40.00    124.50 ! SERP/THRP
+HDA1A    CD31A    CD2R6A    49.30    107.50 ! GVQ, PHE/TOLU   
+CD2R6A   CD31A    CD32A     51.80    108.50 ! GVQ, PHE, c22   
+CD2R6A   CD31A    CD2R6A    51.80    107.50 ! GVQ, PHE, c22   
+CD31A    CD2R6A   CD2R6A    45.80    122.30 ! GVQ, PHE/TOLU 
+CD31A    CD32A    ND3P3A    67.70    113.00 ! GVQ, nh5, qm eh 2007, ammonium cations 
+CD31A    CD32A    HDA2C     26.50    110.10   22.53   2.1790 ! GVQ, NC5, alkane, ammonium cations 
+CD2R6A   CD2R6A   CD2O1D    45.80    122.30 ! PHE/TOLU 
+CD2R6A   CD2O1D   OD2C1D    60.60    121.19 ! 
+CD2R6A   CD2O1D   CD32A     44.50    116.38 !  
+OD2C1D   CD2O1D   CD32A     60.60    121.19 !  
+CD2O1D   CD32A    ND3P3A    67.70    113.00 ! nh5, qm eh 2007, ammonium cations 
+CD2O1D   CD32A    HDA2C     26.50    110.10   22.53   2.1790 ! 47A, NC5, alkane, ammonium cations 
+CD2R6A   CD31A    OD31A     66.00    103.00 ! L269, PRO2, 2-propanol 
+! PYOC
+CD32C    ND2A3    CD32C     50.00    111.00 ! PYOC, PRLD, pyrrolidine, PEML 
+ND2A3   CD32C    CD32A     70.00    113.50 ! PYOC, PRLD, pyrrolidine, PEML 
+ND2A3    CD32C    HDA2A     42.50    111.30 ! PYOC, PRLD, pyrrolidine, PEML 
+CD32C    ND2A3    CD2O1A    70.00    115.00 ! PYOC, DMA 
+CD32C    ND2A3    CD31C     40.00    121.60 ! PYO2, DMA 
+CD2O1A   ND2A3    CD31C     40.90    116.10 ! PYO2, CD2O1A ND2A2 CD31C 40.90  116.10 ! ALAD   
+ND2A3    CD31C    HDA1A     34.80    107.70 ! PYO2, ND2A3  CD31C HDA1A ALAD        % 
+ND2A3    CD31C    CD32A     70.00    113.50 ! PYO2, ND2A2  CD31C CD32A GLN, c22    % 
+ND2A3    CD31C    CD2O1A    55.70    103.68 ! PYO2, ND2A2  CD31C CD2O1A ALAD, tau   % important for N-Ca-C 
+ND2A3    CD2O1A   CD31C     74.80    102.10  174.4    2.6308 ! from ND2A2  CD2O1A   CD31C ALAD % important for Ca-C-N  (dCT-C-N) 
+CD31C    CD33A    CD2R6A    45.80    122.30 ! PHE/TOLU  
+CD33C    CD2R6A   CD2R6A    45.80    122.30 ! from PHE/TOLU
+CD32C    CD2R6A   CD2R6A    45.80    122.30 ! from PHE/TOLU
+ND2A2    CD33C    CD2R6A    70.00    113.50 ! from GLN, c22 % 
+ND2A2    CD32C    CD2R6A    70.00    113.50 ! from GLN, c22 % 
+FDA3     CD30A    CD2R6A   125.00    106.50 ! TFBE, TFET
+CD30A    CD2R6A   CD2R6A    57.00    110.90 ! TFBE, TFET
+CD2R6A   CD2R6A   OD30C     45.20    120.00 ! MTY1, PHEN, Phenol 
+OD2C3A   CD2O3A   CD2R6A    60.60    121.19 ! MTY1,  
+CD2O3A   CD2R6A   CD2R6A    45.80    122.30 ! MTY1,  PHE/TOLU
+CD2R6A   OD30C    CD2O3A    15.00    100.00   10.00   2.0151 ! MTY1,  MAS, csd, EH 2007 PEML 2009 **gives CSD/vibr spectra 
+OD30C    CD2O3A   CD2R6A    55.00    111.00   20.00   2.3260 ! MTY1,  MAS, csd, EH 2007
+CD2R6A   CD2R6A   CD2O1A    45.80    122.30 ! TY4, PHE/TOLU 
+CD2R6A   CD2O1A   OD2C1A    60.60    121.19 ! TY4, 
+HDA3A    CD33C    CD2R6A    49.30    107.50 ! TY4, PHE/TOLU 
+HDA2A    CD32C    CD2R6A    49.30    107.50 ! TY4, PHE/TOLU 
+CD2R6A   CD2O1A   ND2A2     74.80    102.10  174.4    2.6308 ! TY4, ALAD % important for Ca-C-N  (dCT-C-N) 
+CD2R6F   ND2R5E   CD33A     17.00    127.80 ! CLBE, Et-Gua, cmb 04/10
+CD33A    ND2R5E   CD2R5F    17.00    127.80 ! CLBE, Et-Gua, cmb 04/10
+CD2R6A   CD2R6A   OD30A     45.20    120.00 ! CLBE, PHEN, Phenol 
+CD2R6A   OD30A    CD32E     95.00    109.70 ! CLBE, DEET, diethylether, alex 
+ND2R5E   CD32A    CD32E     43.43    107.00 ! CLBE, Et-Gua, cmb 04/10 
+ND2R5E   CD32A    HDA2A     33.43    107.00 ! CLBE, Et-Gua, cmb 04/10 
+CD2R6F   ND2R5E   CD32A     17.00    125.90 ! CLBE, Et-Gua, cmb 04/10 
+CD32A    ND2R5E   CD2R5F    17.00    125.90 ! CLBE, Et-Gua, cmb 04/10 
+! BFS
+CD2R6A   CD2R6A   CD31C  45.80    122.30 ! PHE/TOLU 
+CD2R6A   CD31C    HDA1A  43.00    111.00 ! NAMODEL difluorotoluene
+CD2R6A   CD31C    CD33A  51.80    107.50 ! FBIB, Fatty Binding Inhibitior B, cacha
+CD2R6A   CD31C    ND2A2  40.90    116.10 ! ALAD   % 
+! AOD
+CD326A   CD326A   ND3A3   70.00    113.50 ! PRLD, pyrrolidine, PEML  
+HDA2A    CD326A   ND3A3   69.62    109.54 !  
+CD326A   CD326A   CD2O2A  30.60    120.70                  ! CTER, PEML, Asp 
+HDA2A    CD326A   CD2O2A  29.70    118.90    5.10   2.137  ! CTER, PEML, ACET 
+CD326A   CD2O2A   OD2C2A  48.90    123.00   29.90   2.2930 ! CTER, PEML, ACET 
+CD326A   ND3A3    CD2R6A  50.00    101.80 ! PRO 
+CD326A   ND3A3    HDP1A   64.50    104.90 ! opt
+HDP1A    ND3A3    CD2R6A  64.50    105.00 ! opt 
+ND3A3    CD2R6A   CD2R6A  63.37    119.50 ! opt ! PRO, uncommented, zhu 
+CD2R6A   CD2R6A   CD2O2A  45.80    118.50 ! opt PHE/TOLU 
+CD2R6A   CD2O2A   OD2C2A  60.60    114.50 ! 
+CD2R6A   OD30A    CD2R6A  95.00    109.70 ! DEET, diethylether, alex 
+! BNH
+HDA3A    CD33A    ND3A3   50.00    111.00 ! PRO 
+CD33A    ND3A3    HDP1A   40.00    121.60 ! DMA 
+CD33A    ND3A3    CD2R6A  50.00    111.00 ! PRLD, pyrrolidine, PEML   
+! 2GD
+CD2R6A   CD2R6B   CD2R6A  40.00    120.00   35.00   2.4162  ! BENZ, benzene 
+ND2R6B   CD2R6B   ND2A2   45.00    127.00 ! ADE/GUA, cmb 04/10  ! N3-C2-N2/N1-C6-N6  
+CD2R6A   CD2R6B   ND2A2   45.00    127.00 ! ADE/GUA, cmb 04/10  ! N3-C2-N2/N1-C6-N6  
+CD2R6B   ND2A2    HDP1A   45.60    120.26 ! NMA+ALAD    % 
+CD2R6B   ND2A2    CD33C   97.70    120.77 ! NMA+ALAD    % 
+! BLYS
+CD32A    CD32C    ND2A2   70.00    113.50 ! slack parameter picked up by 3CPD ==> re-optimize?
+
+DIHEDRALS
+CD31C     CD32A    OD30BN   PD1AN    1.256    1   180.00 ! MODIFIED BY JC ; PE
+CD31C     CD32A    OD30BN   PD1AN    3.317    2     0.00 ! MODIFIED BY JC
+CD31C     CD32A    OD30BN   PD1AN    0.000    3     0.00 ! MODIFIED BY JC
+CD31C     CD32A    OD30BN   PD1AN    0.663    4   180.00 ! MODIFIED BY JC
+CD31C     CD32A    OD30BN   PD1AN    2.218    5     0.00 ! MODIFIED BY JC 
+CD31C     CD32A    OD30BN   PD1AN    1.838    6     0.00 ! MODIFIED BY JC
+PD1AN     OD30BN   CD31A    CD31C    2.903    1   220.00 ! Hui-2015
+PD1AN     OD30BN   CD31A    CD31C    2.118    2   180.00 ! Hui-2015
+PD1AN     OD30BN   CD31A    CD31C    0.122    3   180.00 ! Hui-2015
+PD1AN     OD30BN   CD31A    CD33A    2.903    1   220.00 ! Hui-2015
+PD1AN     OD30BN   CD31A    CD33A    2.118    2   180.00 ! Hui-2015
+PD1AN     OD30BN   CD31A    CD33A    0.122    3   180.00 ! Hui-2015
+ND2A2    CD31C    CD31A    OD30BN    1.452    1   180.00 ! from thr
+ND2A2    CD31C    CD31A    OD30BN    0.480    2     0.00 ! 
+ND2A2    CD31C    CD31A    OD30BN    1.040    3     0.00 !
+HDA1A    CD31C    CD31A    OD30BN    0.075    3     0.00 ! from THR/BUO2 
+ND2A2    CD31C    CD32A    OD30BN    0.662    1   180.00 ! 
+ND2A2    CD31C    CD32A    OD30BN    0.534    2   180.00 !
+ND2A2    CD31C    CD32A    OD30BN    1.256    3     0.00 !
+HDA1A    CD31C    CD32A    OD30BN    0.270    1     0.00 ! SER/PRO1, 1-propanol 
+HDA1A    CD31C    CD32A    OD30BN    0.050    2     0.00 ! SER/PRO1, 1-propanol 
+HDA1A    CD31C    CD32A    OD30BN    0.120    3     0.00 ! SER/PRO1, 1-propanol 
+CD2O1A   CD31C    CD32A    OD30BN    0.834    1     0.00 ! ser
+CD2O1A   CD31C    CD32A    OD30BN    0.664    2     0.00 ! ser
+CD2O1A   CD31C    CD32A    OD30BN    1.064    3   180.00 ! ser
+CD2O1A   CD31C    CD31A    OD30BN    0.770    1     0.00 ! thr 
+CD2O1A   CD31C    CD31A    OD30BN    0.590    2   180.00 ! thr
+CD2O1A   CD31C    CD31A    OD30BN    0.530    3   180.00 ! thr
+CD32A    OD30BN   PD1AN    OD2C2C    0.100    3     0.00 ! from NA 
+HDA2A    CD32A    OD30BN   PD1AN     0.000    3     0.00 ! from NA 
+CD31A    OD30BN   PD1AN    OD2C2C    0.100    3     0.00 ! from NA 
+HDA1A    CD31A    OD30BN   PD1AN     0.000    3     0.00 ! from NA 
+! GVQ
+CD31A    CD2R6A   CD2R6A   CD2R6A    3.100    2   180.00 ! TOLU, toluene, geom + freq, peml 2005 ; I have checked it. 
+HDA1A    CD31A    CD2R6A   CD2R6A    0.000    6     0.00 ! for GVQ and M269, ; I have checed it. 
+CD2R6A   CD2R6A   CD31A    CD2R6A    0.230    2   180.00 ! from cgenff  ; I have checked it. 
+CD31A    CD2R6A   CD2R6A   HDR6A     4.200    2   180.00 ! phe/tolu     ; I have checked it. 
+CD2R6A   CD31A    CD32A    ND3P3A    2.547    1   180.00 ! RMSE = 0.603015
+CD2R6A   CD31A    CD32A    ND3P3A    0.707    2   180.00 ! RMSE = 0.603015
+CD2R6A   CD31A    CD32A    ND3P3A    0.304    3     0.00 ! RMSE = 0.603015
+CD2R6A   CD31A    CD32A    HDA2C     0.351    3     0.00 ! RMSE = 0.603015
+HDA1A    CD31A    CD32A    ND3P3A    0.006    3     0.00 ! RMSE = 0.603015
+HDA1A    CD31A    CD32A    HDA2C     0.142    3   180.00 ! RMSE = 0.603015
+CD31A    CD32A    ND3P3A   HDP1B     0.315    3     0.00 ! RMSE = 0.603015
+CD2R6A   CD2R6A   CD2R6A   CD2O1D    3.100    2   180.00 ! TOLU, toluene, geom + freq, peml 2005 
+HDR6A    CD2R6A   CD2R6A   CD2O1D    4.200    2   180.00 ! PHE/TOLU 
+OD2C1D   CD2O1D   CD2R6A   CD2R6A    2.867    2   180.00 ! RMSE = 0.298498
+CD32A    CD2O1D   CD2R6A   CD2R6A    0.295    2     0.00 ! RMSE = 0.298498
+CD2R6A   CD2O1D   CD32A    ND3P3A    0.050    1     0.00 ! RMSE = 0.298498
+CD2R6A   CD2O1D   CD32A    ND3P3A    0.180    2   180.00 ! RMSE = 0.298498
+CD2R6A   CD2O1D   CD32A    ND3P3A    0.340    3     0.00 ! RMSE = 0.298498
+CD2R6A   CD2O1D   CD32A    ND3P3A    0.442    6   180.00 ! RMSE = 0.298498
+CD2R6A   CD2O1D   CD32A    HDA2C     0.656    3     0.00 ! RMSE = 0.298498
+OD2C1D   CD2O1D   CD32A    ND3P3A    0.025    1   180.00 ! RMSE = 0.298498
+OD2C1D   CD2O1D   CD32A    ND3P3A    0.079    2   180.00 ! RMSE = 0.298498
+OD2C1D   CD2O1D   CD32A    ND3P3A    0.113    3   180.00 ! RMSE = 0.298498
+OD2C1D   CD2O1D   CD32A    ND3P3A    0.657    6     0.00 ! RMSE = 0.298498
+OD2C1D   CD2O1D   CD32A    HDA2C     0.194    3   180.00 ! RMSE = 0.298498
+CD2O1D   CD32A    ND3P3A   HDP1B     0.320    3     0.00 ! nter, etam, gly 
+! M269                                        
+CD2R6A   CD2R6A   CD31A    OD31A     0.475    2   180.00 ! RMSE = 0.639795
+CD2R6A   CD31A    CD32A    CD32A     0.170    2     0.00 ! from M269
+CD2R6A   CD31A    CD32A    CD32A     0.562    3     0.00 ! from M269
+CD2R6A   CD31A    CD32A    CD32A     0.050    6     0.00 ! from M269
+CD2R6A   CD2R6A   CD31A    CD32A     0.170    1   180.00 ! for GVQ and M269, RMSE = 0.438662
+CD2R6A   CD2R6A   CD31A    CD32A     0.099    2   180.00 ! for GVQ and M269, RMSE = 0.438662
+CD2R6A   CD31A    CD32A    CD33A     0.170    2     0.00 ! RMSE = 0.438662
+CD2R6A   CD31A    CD32A    CD33A     0.562    3     0.00 ! RMSE = 0.438662
+CD2R6A   CD31A    CD32A    CD33A     0.050    6     0.00 ! RMSE = 0.438662
+CD2R6A   CD31A    CD32A    HDA2A     0.154    3     0.00 ! RMSE = 0.438662
+CD2R6A   CD31A    OD31A    HDP1A     0.533    1     0.00 ! RMSE = 0.438662
+CD2R6A   CD31A    OD31A    HDP1A     0.308    2     0.00 ! RMSE = 0.438662
+CD2R6A   CD31A    OD31A    HDP1A     0.574    3     0.00 ! RMSE = 0.438662
+! PYOC                               
+!==================================================================================
+CD32A   CD32C    ND2A3    CD2O1A     0.323    3     0.00 ! RMSE = 1.83492
+HDA2A   CD32C    ND2A3    CD2O1A     0.621    3     0.00 ! RMSE = 1.83492
+OD2C1A   CD2O1A   ND2A3    CD32C     1.296    1     0.00 ! RMSE = 1.83492
+OD2C1A   CD2O1A   ND2A3    CD32C     4.024    2   180.00 ! RMSE = 1.83492
+CD33C    CD2O1A   ND2A3    CD32C     1.300    1   180.00 ! RMSE = 1.83492
+CD33C    CD2O1A   ND2A3    CD32C     3.633    2   180.00 ! RMSE = 1.83492
+CD32A    CD32C    ND2A3    CD32C     0.003    3   180.00 ! RMSE = 1.83492
+HDA2A    CD32C    ND2A3    CD32C     0.044    3     0.00 ! RMSE = 1.83492
+CD32A    CD32A    CD32C    ND2A3     0.040    3   180.00 ! RMSE = 1.83492
+HDA2A    CD32A    CD32C    ND2A3     0.047    3     0.00 ! RMSE = 1.83492
+
+! 22U                                             
+CD31C    ND2A3    CD2O1A   CD31A     1.700    1     0.00 ! NTER, from NMA 
+CD31C    ND2A3    CD2O1A   CD31A     2.000    2   180.00 ! NTER, from NMA 
+CD32A    CD32C    ND2A3    CD31C     0.003    3   180.00 ! opt from PYOC dihedral RMSE = 1.83492
+CD32C    ND2A3    CD31C    CD32A     0.003    3   180.00 ! opt from PYOC dihedarl RMSE = 1.83492
+CD32A    CD32A    CD31C    ND2A3     0.040    3   180.00 ! opt from PYOC dihedarl RMSE = 1.83492
+CD32C    ND2A3    CD31C    HDA1A     0.044    3     0.00 ! opt from PYOC dihedral RMSE = 1.83492 
+CD32C    CD32A    CD32A    CD31C     0.410    3   180.00 ! THF, viv   
+CD32C    ND2A3    CD2O1A   CD31C     0.820    1     0.00 ! from GLYD   omega right 
+CD32C    ND2A3    CD2O1A   CD31C     3.000    2   180.00 ! from GLYD   omega right 
+HDA2A    CD32C    ND2A3    CD31C     0.200    3     0.00 ! from PRO FIXED PES PEML  CHI4 
+ND2A3    CD31C    CD32A    HDA2A     0.200    3     0.00 ! from GLN, alkanes 
+ND2A3    CD31C    CD2O1A   OD2C1A    0.200    3     0.00 ! from PRO
+ND2A3    CD2O1A   CD31C    HDA1C     0.200    3     0.00 ! from ALAD 
+ND2A3    CD2O1A   CD31C    CD33A     0.000    1     0.00 ! from ALAD, will effect psi 
+ND2A3    CD31C    CD2O1A   ND2A2     0.200    3     0.00 ! from PRO 
+CD31C    ND2A3    CD2O1A   OD2C1A    6.390    2   180.00 ! from ALAD   omega left % 
+CD31C    ND2A3    CD2O1A   OD2C1A    0.680    3     0.00 ! from ALAD   omega left % 
+CD31C    ND2A3    CD2O1A   CD31C     0.820    1     0.00 ! from ALAD   omega 
+CD31C    ND2A3    CD2O1A   CD31C     3.000    2   180.00 ! from ALAD   omega 
+HDA1A    CD31C    ND2A3    CD2O1A    0.200    3     0.00 ! from ALAD, phi, cmap 
+CD32A    CD31C    ND2A3    CD2O1A    1.800    1     0.00 ! from GLN, c22 
+CD2O1A   ND2A3    CD31C    CD2O1A    0.300    1     0.00 ! from PRO FIT PES PEML  CHI5 
+CD2O1A   ND2A3    CD31C    CD2O1A    0.200    2     0.00 ! from PRO FIT PES PEML  CHI5 
+CD2O1A   ND2A3    CD31C    CD2O1A    2.600    3     0.00 ! from PRO FIT PES PEML  CHI5 
+CD33C    CD2R6A   CD2R6A   HDR6A     4.200    2   180.00 ! TOLU, toluene, geom + freq, peml 2005 
+CD31C    CD33A    CD2R6A   CD2R6A    0.170    1   180.00 ! from GVQ and M269, RMSE = 0.438662
+CD31C    CD33A    CD2R6A   CD2R6A    0.099    2   180.00 ! from GVQ and M269, RMSE = 0.438662
+CD32C    ND2A3    CD31C    CD2O1A    1.800    1     0.00 ! from PRO FIT PES PEML  CHI5 
+CD32C    ND2A3    CD31C    CD2O1A    1.200    2     0.00 ! from PRO FIT PES PEML  CHI5 
+CD32C    ND2A3    CD31C    CD2O1A    0.500    3   180.00 ! from PRO FIT PES PEML  CHI5 
+ND2A3    CD2O1A   CD31C    CD32A     0.200    3     0.00 ! from PRO 
+CD33C    CD2R6A   CD2R6A   CD2R6A    3.100    2   180.00 ! TOLU, toluene, geom + freq, peml 2005 
+! TFBE                                        
+CD30A    CD2R6A   CD2R6A   HDR6A     4.200    2   180.00 ! TOLU, toluene, geom + freq, peml 2005 
+CD30A    CD2R6A   CD2R6A   CD2R6A    3.100    2   180.00 ! TOLU, toluene, geom + freq, peml 2005 
+FDA3     CD30A    CD2R6A   CD2R6A    3.800    2   180.00 ! opt. FLUB 
+! MTY1                                       
+CD2R6A   CD2R6A   CD2R6A   OD30C     3.100    2   180.00 ! PHEN, phenol 
+HDR6A    CD2R6A   CD2R6A   OD30C     4.200    2   180.00 ! PHEN, phenol 
+CD2R6A   CD2R6A   OD30C    CD2O3A    0.107    1     0.00 ! RMSE = 0.179469
+CD2R6A   CD2R6A   OD30C    CD2O3A    0.409    2   180.00 ! RMSE = 0.179469
+CD2R6A   CD2R6A   OD30C    CD2O3A    0.179    3   180.00 ! RMSE = 0.179469
+OD2C3A   CD2O3A   OD30C    CD2R6A    0.160    1   180.00 ! RMSE = 0.179469
+OD2C3A   CD2O3A   OD30C    CD2R6A    0.564    2   180.00 ! RMSE = 0.179469
+OD2C3A   CD2O3A   OD30C    CD2R6A    1.016    3   180.00 ! RMSE = 0.179469
+OD2C3A   CD2O3A   OD30C    CD2R6A    0.396    6   180.00 ! RMSE = 0.179469
+CD2R6A   CD2O3A   OD30C    CD2R6A    0.517    2   180.00 ! RMSE = 0.179469
+OD30C    CD2O3A   CD2R6A   CD2R6A    0.021    1   180.00 ! RMSE = 0.179469
+OD30C    CD2O3A   CD2R6A   CD2R6A    0.894    2   180.00 ! RMSE = 0.179469
+OD2C3A   CD2O3A   CD2R6A   CD2R6A    0.794    2   180.00 ! RMSE = 0.179469
+CD2O3A   CD2R6A   CD2R6A   CD2R6A    3.100    2   180.00 ! PHE/TOLU 
+CD2O3A   CD2R6A   CD2R6A   HDR6A     4.200    2   180.00 ! PHE/TOLU 
+CD2R6A   CD2R6A   CD2R6A   CD2O1A    3.100    2   180.00 ! TOLU, toluene, geom + freq, peml 2005 
+HDR6A    CD2R6A   CD2R6A   CD2O1A    4.200    2   180.00 ! PHE/TOLU 
+! MTY2                                        
+CD2R6A   CD2O1A   ND2A2    HDP1A     0.422    1     0.00 ! MTY2, RMSE = 0.246547
+CD2R6A   CD2O1A   ND2A2    HDP1A     1.709    2     0.00 ! MTY2, RMSE = 0.246547
+CD2R6A   CD2O1A   ND2A2    CD32C     0.090    1     0.00 ! MTY2, RMSE = 0.246547
+CD2R6A   CD2O1A   ND2A2    CD32C     0.303    2   180.00 ! MTY2, RMSE = 0.246547
+CD2R6A   CD2O1A   ND2A2    CD32C     0.495    3     0.00 ! MTY2, RMSE = 0.246547
+OD2C1A   CD2O1A   CD2R6A   CD2R6A    0.180    1     0.00 ! MTY2, RMSE = 0.246547
+OD2C1A   CD2O1A   CD2R6A   CD2R6A    0.990    3     0.00 ! MTY2, RMSE = 0.246547
+
+
+! MTY3                               
+CD2R6A   CD32C    ND2A2    CD2O1A    0.124    1   180.00 ! MTY3, RMSE = 0.101457
+CD2R6A   CD32C    ND2A2    CD2O1A    0.695    3   180.00 ! MTY3, RMSE = 0.101457
+CD2R6A   CD32C    ND2A2    HDP1A     0.206    1     0.00 ! MTY3, RMSE = 0.101457
+CD2R6A   CD32C    ND2A2    HDP1A     0.202    3     0.00 ! MTY3, RMSE = 0.101457
+CD2R6A   CD32C    ND2A2    HDP1A     0.005    6   180.00 ! MTY3, RMSE = 0.101457
+CD2R6A   CD2R6A   CD32C    ND2A2     0.075    2     0.00 ! MTY3, RMSE = 0.101457
+CD2R6A   CD2R6A   CD32C    ND2A2     0.028    6   180.00 ! MTY3, RMSE = 0.101457
+CD2R6A   CD2R6A   CD32C    HDA2A     5.620    1     0.00 ! MTY3, RMSE = 0.101457
+CD2R6A   CD2R6A   CD32C    HDA2A     0.355    2     0.00 ! MTY3, RMSE = 0.101457
+CD32C    CD2R6A   CD2R6A   CD2R6A    3.100    2   180.00 ! MTY3, TOLU, toluene, geom + freq, peml 2005 
+CD32C    CD2R6A   CD2R6A   HDR6A     4.200    2   180.00 ! MTY3, TOLU, toluene, geom + freq, peml 2005 
+! TY4                                         
+CD32C    CD2R6A   CD2R6A   OD30C     3.100    2   180.00 ! TY4, TOLU, toluene, geom + freq, peml 2005 
+CD32A    CD2R6A   CD2R6A   OD30C     3.100    2   180.00 ! TY4, TOLU, toluene, geom + freq, peml 2005 
+CD33A    CD2R6A   CD2R6A   OD30C     3.100    2   180.00 ! TY4, TOLU, toluene, geom + freq, peml 2005 
+CD2O3A   CD2R6A   CD2R6A   CLDR1     3.800    2   180.00 ! TY4, 12DCB
+CD2O1A   CD2R6A   CD2R6A   CLDR1     3.800    2   180.00 ! TY4, 12DCB
+! BLYS                               
+CD32A    CD32A    CD32A    ND2A2     0.360    1   180.00 ! BLYS, RMSE = 0.494876
+CD32A    CD32A    CD32A    ND2A2     0.213    2   180.00 ! BLYS, RMSE = 0.494876
+CD32A    CD32A    CD32A    ND2A2     0.020    3     0.00 ! BLYS, RMSE = 0.494876
+CD32A    CD32A    CD32A    ND2A2     0.085    6   180.00 ! BLYS, RMSE = 0.494876
+HDA2A    CD32A    CD32A    ND2A2     0.200    3     0.00 ! BLYS, PRO 
+CD32A    CD32A    ND2A2    CD2O1A    0.613    1     0.00 ! BLYS, RMSE = 0.494876
+CD32A    CD32A    ND2A2    CD2O1A    0.125    2   180.00 ! BLYS, RMSE = 0.494876
+CD32A    CD32A    ND2A2    CD2O1A    0.084    3   180.00 ! BLYS, RMSE = 0.494876
+CD32A    CD32A    ND2A2    CD2O1A    0.065    6     0.00 ! BLYS, RMSE = 0.494876
+HDA2A    CD32A    ND2A2    CD2O1A    0.168    3   180.00 ! BLYS, RMSE = 0.494876
+CD32A    CD32A    ND2A2    HDP1A     0.107    1   180.00 ! BLYS, RMSE = 0.494876
+CD32A    CD32A    ND2A2    HDP1A     0.743    2   180.00 ! BLYS, RMSE = 0.494876
+CD32A    CD32A    ND2A2    HDP1A     0.127    3   180.00 ! BLYS, RMSE = 0.494876
+HDA2A    CD32A    ND2A2    HDP1A     0.127    3   180.00 ! BLYS, RMSE = 0.494876
+CD32A    ND2A2    CD2O1A   OD2C1A    0.820    1   180.00 ! 2KP, GLYD   omega right 
+CD32A    ND2A2    CD2O1A   OD2C1A    3.000    2   180.00 ! 2KP, GLYD   omega right 
+CD32A    ND2A2    CD2O1A   CD33C     0.820    1     0.00 ! 2KP, NMA % 
+CD32A    ND2A2    CD2O1A   CD33C     3.000    2   180.00 ! 2KP, NMA 
+CD32A    ND2A2    CD2O1A   CD2R6A    0.090    1     0.00 ! MY2, RMSE = 0.246547
+CD32A    ND2A2    CD2O1A   CD2R6A    0.303    2   180.00 ! MY2, RMSE = 0.246547
+CD32A    ND2A2    CD2O1A   CD2R6A    0.495    3     0.00 ! MY2, RMSE = 0.246547
+ND2A2    CD2O1A   CD2R6A   CD2R6A    1.000    2   180.00 ! MTY2, RMSE = 0.246547
+BRDR1    CD2R6A   CD2R6A   OD30C     3.100    2   180.00 ! PHEN, phenol 
+CD2O3A   CD2R6A   CD2R6A   CD33A     3.100    2   180.00 ! TOLU, toluene, geom + freq, peml 2005 
+! CLBE                                 
+OD31A    PD1AN    OD30BN   CD32C     0.950    2     0.00 ! MP_1, adm jr., c36
+OD31A    PD1AN    OD30BN   CD32C     0.500    3     0.00 ! MP_1, adm jr.
+ND2R5F   CD2R5F   ND2R5E   CD32A     1.000    2   180.00 ! va; Et-Gua, jal 
+CD2R6F   CD2R6F   ND2R5E   CD32A     1.000    2   180.00 ! va; Et-Gua 
+CD2O4A   CD2R6F   ND2R5E   CD32A     2.000    2   180.00 ! GUA, jal 
+CD2R6F   ND2R5E   CD32A    CD32E     1.000    3     0.00 ! va; Et-Gua 
+CD2R6F   ND2R5E   CD32A    HDA2A     0.000    3     0.00 ! va; Et-Gua 
+ND2R5E   CD32A    CD32E    OD30A     3.300    1   180.00 ! LIPID choline, 12/92
+ND2R5E   CD32A    CD32E    OD30A     0.400    3   180.00 ! LIPID choline, 12/92
+ND2R5E   CD32A    CD32E    HDA2E     0.160    3     0.00 ! va; Et-Gua 
+CD2R6A   CD2R6A   CD2R6A   OD30A     3.100    2   180.00 ! PHEN, phenol 
+CD2R6A   CD2R6A   OD30A    CD32E     0.570    1     0.00 ! DMOE, ATM 
+CD2R6A   CD2R6A   OD30A    CD32E     0.290    2     0.00 ! DMOE, ATM 
+CD2R6A   CD2R6A   OD30A    CD32E     0.430    3     0.00 ! DMOE, ATM 
+HDR6A    CD2R6A   CD2R6A   OD30A     4.200    2   180.00 ! PHEN, phenol 
+CD2R6A   OD30A    CD32E    HDA2E     0.284    3     0.00 ! DEET, alex 
+CD2R6A   OD30A    CD32E    CD32A     0.570    1     0.00 ! DMOE, 
+CD2R6A   OD30A    CD32E    CD32A     0.290    2     0.00 ! DMOE, ATM 
+CD2R6A   OD30A    CD32E    CD32A     0.430    3     0.00 ! DMOE, ATM 
+CD32E    CD32A    ND2R5E   CD2R5F    1.000    3     0.00 ! va; Et-Gua, jal
+HDA2A    CD32A    ND2R5E   CD2R5F    0.000    3     0.00 ! va; Et-Gua, jal 
+CD32A    ND2R5E   CD2R5F   HDR5B     1.000    2   180.00 ! ADE, jal 
+! BFS                                
+CD2R6A   CD2R6A   CD2R6A   CD31C     3.100    2   180.00 ! TOLU, toluene, geom + freq, peml 2005 
+HDR6A    CD2R6A   CD2R6A   CD31C     4.200    2   180.00 ! BENZ, benzene, geom + freq, peml 2005 
+CD2R6A   CD2R6A   CD31C    CD33A     0.170    1   180.00 ! for GVQ and M269, RMSE = 0.438662
+CD2R6A   CD2R6A   CD31C    CD33A     0.099    2   180.00 ! for GVQ and M269, RMSE = 0.438662
+CD2R6A   CD2R6A   CD31C    ND2A2     0.075    2     0.00 ! MTY3, RMSE = 0.101457
+CD2R6A   CD2R6A   CD31C    ND2A2     0.028    6   180.00 ! MTY3, RMSE = 0.101457
+CD2R6A   CD2R6A   CD31C    HDA1A     0.000    6     0.00 ! PHE/TOLU 
+CD2R6A   CD31C    CD33A    HDA3A     0.040    3     0.00 ! FBIB, Fatty Binding Inhibitior B, cacha
+CD2R6A   CD31C    ND2A2    CD2O1A    0.015    1     0.00 ! from CG2R61 CG321 NG2S1 CG2O1
+CD2R6A   CD31C    ND2A2    CD2O1A    0.298    2     0.00 ! from CG2R61 CG321 NG2S1 CG2O1
+CD2R6A   CD31C    ND2A2    CD2O1A    0.076    3   180.00 ! from CG2R61 CG321 NG2S1 CG2O1
+CD2R6A   CD31C    ND2A2    CD2O1A    0.619    4     0.00 ! from CG2R61 CG321 NG2S1 CG2O1
+CD2R6A   CD31C    ND2A2    CD2O1A    0.148    6     0.00 ! from CG2R61 CG321 NG2S1 CG2O1
+CD2R6A   CD31C    ND2A2    HDP1A     0.000    1     0.00 ! from CG2R61 CG321 NG2S1 HGP1
+CD31C    ND2A2    CD2O1A   CD2R6A    0.090    1     0.00 ! MTY2, RMSE = 0.246547
+CD31C    ND2A2    CD2O1A   CD2R6A    0.303    2   180.00 ! MTY2, RMSE = 0.246547
+CD31C    ND2A2    CD2O1A   CD2R6A    0.495    3     0.00 ! MTY2, RMSE = 0.246547
+CD2O1A   CD2R6A   CD2R6A   OD31C     3.100    2   180.00 ! PHEN, phenol 
+! AOD                                         
+CD326A   CD326A   ND3A3    CD2R6A    2.500    1   180.00 ! from NG311 CG321 NG311 CG2R61
+CD326A   CD326A   ND3A3    CD2R6A    1.500    2     0.00 ! from NG311 CG321 NG311 CG2R61
+CD326A   CD326A   ND3A3    CD2R6A    0.500    3     0.00 ! from NG311 CG321 NG311 CG2R61
+CD326A   CD326A   ND3A3    HDP1A     0.100    3     0.00 ! from CG331 CG321 NG311 HGP1
+HDA2A    CD326A   ND3A3    CD2R6A    0.000    3   180.00 ! from HGA2 CG321 NG311 CG2R61
+HDA2A    CD326A   ND3A3    HDP1A     0.050    3     0.00 ! from HGA2 CG321 NG311 HGPAM1
+CD326A   CD326A   CD2O2A   OD2C2A    0.200    3     0.00 ! GLU, c22, chi3  
+HDA2A    CD326A   CD2O2A   OD2C2A    0.420    3   180.00 ! ASP, ACET, PEML 
+CD326A   CD326A   CD326A   CD2O2A    0.200    3     0.00 ! CTER, GLUP 
+HDA2A    CD326A   CD326A   CD2O2A    0.200    3     0.00 ! CTER 
+CD326A   CD326A   CD326A   ND3A3     2.100    1     0.00 ! PRO FIT PES PEML  CHI3 
+CD326A   CD326A   CD326A   ND3A3     0.800    2     0.00 ! PRO FIT PES PEML  CHI3 
+CD326A   CD326A   CD326A   ND3A3     0.600    3     0.00 ! PRO FIT PES PEML  CHI3 
+HDA2A    CD326A   CD326A   ND3A3     0.200    3     0.00 ! PRO 
+CD326A   ND3A3    CD2R6A   CD2R6A    1.798    2   180.00 ! RMSE = 0.15 
+CD326A   ND3A3    CD2R6A   CD2R6A    0.254    4   180.00 ! RMSE = 0.15 
+OD2C2A   CD2O2A   CD2R6A   CD2R6A    3.100    2   180.00 ! RMSE = 4.25733
+HDR6A    CD2R6A   CD2R6A   CD2O2A    0.420    3   180.00 ! ASP, ACET, PEML 
+CD2R6A   CD2R6A   OD30A    CD2R6A    0.632    1     0.00 ! RMSE = 0.0639371
+CD2R6A   CD2R6A   OD30A    CD2R6A    0.096    2     0.00 ! RMSE = 0.0639371
+CD2R6A   CD2R6A   OD30A    CD2R6A    2.266    3     0.00 ! RMSE = 0.0639371
+! CCNC                                        
+CD2R6A   CD2R6A   ND3A3    CD33A     1.798    2   180.00 ! RMSE = 0.154527
+CD2R6A   CD2R6A   ND3A3    CD33A     0.254    4   180.00 ! RMSE = 0.154527
+CD2R6A   CD2R6A   ND3A3    HDP1A     0.502    2     0.00 ! RMSE = 0.154527
+! NCCC                                        
+CD2O2A   CD2R6A   CD2R6A   ND3A3     0.1959   2     0.00 ! RMSE = 0.150698
+CD2R6A   CD2R6A   CD2R6A   ND3A3     3.100    2   180.00 ! FEOZ, phenoxazine, erh based on PROT toluene, adm jr., 3/7/92
+CD2O2A   CD2R6A   CD2R6A   CD2R6A    3.100    2   180.00 ! BIPHENYL ANALOGS, peml
+ND3A3    CD2R6A   CD2R6A   HDR6A     0.200    3     0.00 ! PRO 
+HDA3A    CD33A    ND3A3    CD2R6A    0.000    3   180.00 ! from HGA2 CG321 NG311 CG2R61
+HDA3A    CD33A    ND3A3    HDP1A     0.050    3     0.00 ! from HGA2 CG321 NG311 HGPAM1
+! 2GD                                           
+CD2R6A   CD2R6A   CD2R6B   ND2R6B    0.810    2   180.00 ! PYRM, pyrimidine
+CD2R6A   CD2R6B   CD2R6A   HDR6A     4.200    2   180.00 ! BENZ, benzene, geom + freq, peml 2005 
+CD2R6A   CD2R6B   CD2R6A   CD2R6B    2.800    2   180.00 ! BENZ, benzene, geom + freq, peml 2005 
+CLDR1    CD2R6A   CD2R6A   CD2R6B    3.200    2   180.00 ! CHLB
+HDR6A    CD2R6A   CD2R6B   ND2A2     0.200    3     0.00 ! PRO 
+CD2R6B   CD2R6A   CD2R6B   ND2A2     5.429    1     0.00 ! from BNH, RMSE = 0.154527
+CD2R6B   CD2R6A   CD2R6B   ND2A2     5.372    2   180.00 ! from BNH, RMSE = 0.154527
+CD2R6B   CD2R6A   CD2R6B   ND2A2     5.276    3     0.00 ! from BNH, RMSE = 0.154527
+CD2R6B   ND2R6B   CD2R6C   ND2B1     4.000    2   180.00 ! GUA, jal 
+CD2R6B   ND2A2    CD33C    HDA3A     0.200    3     0.00 ! NMA 
+CD2R6C   ND2R6B   CD2R6B   ND2A2     2.800    2   180.00 ! BENZ, benzene, geom + freq, peml 2005  
+! for MPM, for 2GD                            
+ND2R6B   CD2R6B   ND2A2    CD33C     0.856    3   180.00 ! RMSE = 0.00319115
+CD2R6A   CD2R6B   ND2A2    CD33C     0.892    3     0.00 ! RMSE = 0.00319115
+ND2R6B   CD2R6B   ND2A2    HDP1A     1.892    2     0.00 ! RMSE = 0.00319115
+CD2R6A   CD2R6B   ND2A2    HDP1A     2.087    2     0.00 ! RMSE = 0.00319115
+! BLYS
+CD32A    CD32A    CD32C    ND2A2     0.200    3     0.00 ! ALBE, Alpha Lysine Benzyl Ester CDCA Amide, cacha
+CD32A    CD32C    ND2A2    HDP1A     0.000    1     0.00 ! PROT from HGP1   NG2S1  CG321  CT3, for lactams, adm jr.
+CD32A    CD32C    ND2A2    CD2O1A    1.800    1     0.00 ! 22 , from CG321 CG321 NG2S1 CG2O1, penalty= 0.9
+HDA2A    CD32A    CD32C    ND2A2     0.195    3     0.00 ! TCA, Taurocholic Acid, cacha, 03/06 OK
+
+IMPROPERS
+CD2O1A   CD31C    ND2A3    OD2C1A   37.200    0     0.00 ! ALAD, alanine dipeptide % 
+! ============================================
+NONBONDED nbxmod  5 atom vatom cdiel vdistance switch vswitch -
+cutnb 16.0 ctofnb 12.0 ctonnb 10.0 eps 1.0 e14fac 1.0 wmin 1.5
+
+END
+RETURN

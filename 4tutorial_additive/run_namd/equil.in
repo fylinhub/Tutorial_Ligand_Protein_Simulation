@@ -1,0 +1,124 @@
+# (2zc9 - chlb ligand)
+lonepairs on
+set pdbid 2zc9
+set job            0;
+set outputname     $pdbid.prod.$job;
+
+# initial config
+coordinates    step5_pbcsetup.pdb; 
+# force field params
+structure       step5_pbcsetup.psf;            
+
+
+# paraTypeXplor on
+paraTypeCharmm  on;
+
+# toppar files
+##set toppar     /home/fylin/halogen/drude/protein_simulation/additive/add_toppar
+parameters      ../add_toppar/par_all36_prot.prm
+parameters      ../add_toppar/par_all36_na.prm
+parameters      ../add_toppar/par_all36_carb.prm
+parameters      ../add_toppar/par_all36_lipid.prm
+parameters      ../add_toppar/stream/prot/toppar_all36_prot_fluoro_alkanes.str
+parameters      ../add_toppar/stream/prot/toppar_all36_prot_na_combined.str
+parameters      ../add_toppar/toppar_water_ions_namd.str
+parameters      ../add_toppar/par_all36_cgenff.prm
+parameters      ../add_toppar/22u_lp_namd.str
+####################################################################################
+# output params
+outputName         ./results/$outputname; # base name for output from this run
+binaryoutput       no;
+
+# protocol params
+firsttimestep 0 
+numsteps    20000 #100000 ; ## 100ps    
+
+set   temp     277 ; ##277.0
+temperature  $temp
+seed             51345
+
+## 
+restartfreq     10000
+dcdfreq         10000 
+outputEnergies  10000
+ 
+# integrator params
+timestep        1 ; #fs  # fs/step. If experiencing instability, try smaller value, e.g., 0.75 or 0.5.
+
+#  !!change boxsize below!!
+#############################################################3
+# boundary conditions / periodic cell
+cellBasisVector1   75.0    0         0     ; # 75.0    0         0    
+cellBasisVector2   0       75.0      0     ; # 0       75.0      0
+cellBasisVector3   0       0         76.0  ; # 0       0         76.0
+MARGIN 10.0
+
+# These are specified by CHARMM
+exclude        scaled1-4;              # non-bonded exclusion policy to use "none,1-2,1-3,1-4,or scaled1-4"
+                                       # 1-2: all atoms pairs that are bonded are going to be ignored
+                                       # 1-3: 3 consecutively bonded are excluded
+                                       # scaled1-4: include all the 1-3, and modified 1-4 interactions
+                                       # electrostatic scaled by 1-4scaling factor 1.0
+                                       # vdW special 1-4 parameters in charmm parameter file.
+
+1-4scaling           1.0;
+
+# CHARMM and AMber use rigid water and SHAKE H-bonds.
+switching            on;
+mergeCrossterms      on;
+
+# You have some freedom choosing the cutoff
+cutoff              12.0;              # may use smaller, maybe 10., with PME
+switchdist          10.0;              # cutoff - 2.
+                                       # switchdist - where you start to switch
+                                       # cutoff - where you stop accounting for nonbond interactions.
+                                       # correspondence in charmm:
+                                       # (cutnb,ctofnb,ctonnb = pairlistdist,cutoff,switchdist)
+LJcorrection        yes;
+pairlistdist        16.0;              # stores the all the pairs with in the distance it should be larger
+                                       # than cutoff( + 2.) 
+stepspercycle       20;                # 20 redo pairlists every ten steps
+pairlistsPerCycle    2;                # 2 is the default 
+                                       # this means every 20/2=10 steps the pairlist will be updated
+
+                                       # If drudeHardwall is not applicable, please set 0.5.
+rigidBonds          all;               # Bound constraint all bonds involving H are fixed in length
+nonbondedFreq       1;                 # nonbonded forces every step
+fullElectFrequency  1;                 # PME every step
+
+
+wrapWater           on;                # wrap water to central cell
+wrapAll             on;                # wrap other molecules too
+wrapNearest        off;                # use for non-rectangular cells (wrap to the nearest image)
+
+
+
+# PME (for full-system periodic electrostatics)
+# source checkfft.str
+PME             on
+PMEInterpOrder 6
+PMEGridSizeX   90
+PMEGridSizeY   90
+PMEGridSizeZ   90
+
+# Pressure and volume control
+useGroupPressure       yes;            # use a hydrogen-group based pseudo-molecular viral to calcualte pressure and
+                                       # has less fluctuation, is needed for rigid bonds (rigidBonds/SHAKE)
+useFlexibleCell         no;            # yes for anisotropic system like membrane 
+
+langevin                on;
+langevinDamping         5;
+langevinTemp            $temp;
+langevinHydrogen        off;           # indicates whether or not Langevin dynamics will be applied to hydrogen atoms in the simulation
+
+# constant pressure
+langevinPiston          on;
+langevinPistonTarget    1.01325;       # units: bar, the pressure which the Langevin piston tries to maintain. (1 atm = 1.013 bar) 
+langevinPistonPeriod    200 ; ##50.0;          #sets the oscillation time constant in fs for the Langevin piston.
+langevinPistonDecay     100 ; ##25.0;          #sets the damping time constant in fs for the Langevin piston. 
+langevinPistonTemp      $temp;
+
+constraints on
+consRef equil_restrain.pdb
+consKFile equil_restrain.pdb
+consKCol B 

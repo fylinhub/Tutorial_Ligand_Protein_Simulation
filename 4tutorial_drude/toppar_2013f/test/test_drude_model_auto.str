@@ -1,0 +1,1680 @@
+* $Id: test_drude_model.str 28 2015-07-29 23:54:15Z alex $
+* Test case, Drude model compounds ("model") toppar file
+*
+
+!add dmpn etc
+
+set boml 0 ! set to -1 if the series contains 3-membered rings
+
+set count 1
+set nres 132
+
+!ethers
+set resi1  DEET
+set resi2  DME
+set resi3  DMET
+set resi4  MEET
+set resi5  THF
+set resi6  TF2M
+set resi7  THP
+set resi8  MPET
+set resi9  MBET
+set resi10 EPET
+!alkanes
+set resi11 ETHA
+set resi12 PROP1
+set resi13 IBUT
+set resi14 BUTA
+set resi15 PENT
+set resi16 HEXA
+set resi17 HEPT
+set resi18 CPEN
+set resi19 CHEX
+set resi20 MEOH
+set resi21 ETOH
+set resi22 PRO1
+set resi23 BUO1
+set resi24 PRO2
+set resi25 BUO2
+!aromatics
+set resi26 BENZ
+set resi27 TOLU
+!amides
+set resi28 ACEM
+set resi29 NMA
+set resi30 DMA
+!heterocycles
+set resi31 PYR
+set resi32 PYRM
+set resi33 PYRR
+set resi34 IMID
+set resi35 INDO
+set resi36 PUR1
+set resi37 PUR0
+set resi38 4MIM
+set resi39 MIND
+!misc
+set resi40 MAS
+set resi41 ACEH
+!charged
+set resi42 IMIM
+set resi43 GUAN
+set resi44 MGUAN
+set resi45 PHEN
+!sulfur containing
+set resi46 MESH
+set resi47 ETSH
+set resi48 PRSH
+set resi49 BUSH
+set resi50 DMDS
+set resi51 DMS
+set resi52 EMS
+!lipid model compounds
+set resi53 NC4
+set resi54 NH5
+set resi55 NC5
+set resi56 ACET
+set resi57 ETAM
+set resi58 NEOP
+set resi59 BU2M
+set resi60 BU22M
+set resi61 BU23M
+set resi62 CPNM
+set resi63 CHXM
+set resi64 DIOX
+set resi65 CRES
+set resi66 B3MO1
+set resi67 CPO1
+set resi68 BGUAN
+set resi69 CHOL
+set resi70 EAS 
+set resi71 MPRO
+set resi72 MBU       
+!misc alkanes
+set resi73 DECA
+set resi74 PEND
+set resi75 OCTD
+!alkenes
+set resi76 2BTE
+set resi77 2PTE
+set resi78 2HEX
+set resi79 3HEX
+!charged
+set resi80 NC2
+set resi81 NC3
+set resi82 dmpn
+set resi83 MP_0
+set resi84 MP_1
+set resi85 MP_2
+set resi86 PHET
+set resi87 MES
+set resi88 ETS
+!carbonyls
+set resi89 AALD
+set resi90 PALD
+set resi91 BALD
+set resi92 IBLD
+set resi93 ACO 
+set resi94 BTON
+! halogen
+set resi95  CHLB
+set resi96  12DCB
+set resi97  13DCB
+set resi98  14DCB
+set resi99  123TCB
+set resi100 124TCB
+set resi101 135TCB
+set resi102 BROB
+set resi103 12DBB
+set resi104 13DBB
+set resi105 14DBB
+set resi106 123TBB
+set resi107 124TBB
+set resi108 135TBB
+set resi109 IODB
+set resi110 12DIB
+set resi111 13DIB
+set resi112 14DIB
+set resi113 123TIB
+set resi114 124TIB
+set resi115 135TIB
+set resi116 FLUB
+set resi117 CLET 
+set resi118 DCLE
+set resi119 TCLE
+set resi120 BRET
+set resi121 DBRE
+set resi122 TBRE
+set resi123 IETH
+set resi124 DIET
+set resi125 TIET
+set resi126 FETH
+set resi127 DFET
+set resi128 TFET
+! neutral amine
+set resi129 MAM1
+set resi130 EAM1
+set resi131 PAM1
+set resi132 4MIE !! not updated from alexey
+
+
+set seed1  1 C1 1 C2 1 O3
+set seed2  1 C1 1 O2 1 C3
+set seed3  1 C1 1 O2 1 C3
+set seed4  1 C1 1 C2 1 O3
+set seed5  1 O1 1 C1 1 C2
+set seed6  1 O1 1 C1 1 C2
+set seed7  1 O1 1 C1 1 C2
+set seed8  1 C1 1 O2 1 C3
+set seed9  1 C1 1 O2 1 C3
+set seed10 1 C1 1 C2 1 O3
+set seed11 1 H11 1 C1 1 C2
+set seed12 1 C1 1 C2 1 C3
+set seed13 1 C1 1 CT 1 C2
+set seed14 1 C1 1 C2 1 C3
+set seed15 1 C1 1 C2 1 C3
+set seed16 1 C1 1 C2 1 C3
+set seed17 1 C1 1 C2 1 C3
+set seed18 1 C1 1 C2 1 C3
+set seed19 1 C1 1 C2 1 C3
+set seed20 1 HO1 1 O1 1 C1
+set seed21 1 HO1 1 O1 1 C1
+set seed22 1 HO1 1 O1 1 C1
+set seed23 1 HO1 1 O1 1 C1
+set seed24 1 HO2 1 O2 1 C2
+set seed25 1 HO2 1 O2 1 C2
+set seed26 1 CG 1 CD1 1 CE1
+set seed27 1 CG 1 CD1 1 CE1
+set seed28 1 N 1 C 1 CL
+set seed29 1 N 1 C 1 CL
+set seed30 1 N 1 C 1 CL
+set seed31 1 CG 1 CD1 1 CE1
+set seed32 1 C4 1 C5 1 C6
+set seed33 1 N5 1 C1 1 C2
+set seed34 1 ND1 1 CG 1 CD2
+set seed35 1 CG 1 CD1 1 NE1
+set seed36 1 C6 1 C5 1 C4
+set seed37 1 C6 1 C5 1 C4
+set seed38 1 ND1 1 CG 1 CB
+set seed39 1 CG 1 CD1 1 NE1
+set seed40 1 C1 1 C 1 OM
+set seed41 1 O2 1 C2 1 C1
+set seed42 1 CG 1 CD2 1 NE2
+set seed43 1 N1 1 C 1 N2
+set seed44 1 N1 1 C 1 N2
+set seed45 1 CG 1 CD1 1 CE1
+set seed46 1 HS1 1 S1 1 C1
+set seed47 1 HS1 1 S1 1 C1
+set seed48 1 HS1 1 S1 1 C1
+set seed49 1 HS1 1 S1 1 C1
+set seed50 1 H11 1 C1 1 S1
+set seed51 1 H21 1 C2 1 S1
+set seed52 1 H31 1 C3 1 C2
+set seed53 1 C1 1 N 1 C2
+set seed54 1 HN4 1 N 1 C1
+set seed55 1 C4 1 N 1 C1
+set seed56 1 O1 1 C2 1 C1
+set seed57 1 N 1 C1 1 C5
+set seed58 1 C2 1 CT 1 C1
+set seed59 1 C1 1 CT 1 C2
+set seed60 1 C4 1 CT 1 C1
+set seed61 1 C1 1 CT 1 C2
+set seed62 1 C1 1 C2 1 C3
+set seed63 1 C1 1 C2 1 C3
+set seed64 1 O1 1 C1 1 C2
+set seed65 1 CG 1 CD1 1 CE1
+set seed66 1 C1 1 C2 1 C3
+set seed67 1 C1 1 C2 1 C3
+set seed68 1 CA 1 CB 1 CG
+set seed69 1 C4 1 N 1 C1
+set seed70 1 C2 1 OM  1 C
+set seed71 1 C2 1 OM  1 C
+set seed72 1 C2 1 OM  1 C
+set seed73 1 C1 1 C2 1 C3
+set seed74 1 C1 1 C2 1 C3
+set seed75 1 C1 1 C2 1 C3
+set seed76 1 C  1 C1 1 C2
+set seed77 1 C4 1 C  1 C1
+set seed78 1 C4 1 C  1 C1
+set seed79 1 C4 1 C2 1 C
+set seed80 1 H11 1 C1 1 N
+set seed81 1 H11 1 C1 1 N
+set seed82 1 O11 1 P  1 O12
+set seed83 1 H11 1 C1 1 O1
+set seed84 1 H11 1 C1 1 O1
+set seed85 1 H11 1 C1 1 O1
+set seed86 1 CG  1 CD1 1 CE1
+set seed87 1 H11 1 C1  1 H12
+set seed88 1 H21 1 C2  1 C1
+set seed89 1 O   1 C   1 CB
+set seed90 1 O   1 C   1 CB
+set seed91 1 O   1 C   1 CB
+set seed92 1 O   1 C   1 CB
+set seed93 1 O1  1 C1  1 C2
+set seed94 1 O1  1 C1  1 C2
+
+! halogen
+set seed95  1 C1  1 C2  1 C3  
+set seed96  1 C1  1 C2  1 C3  
+set seed97  1 C1  1 C2  1 C3  
+set seed98  1 C1  1 C2  1 C3  
+set seed99  1 C1  1 C2  1 C3  
+set seed100 1 C1  1 C2  1 C3  
+set seed101 1 C1  1 C2  1 C3  
+set seed102 1 C1  1 C2  1 C3  
+set seed103 1 C1  1 C2  1 C3  
+set seed104 1 C1  1 C2  1 C3  
+set seed105 1 C1  1 C2  1 C3  
+set seed106 1 C1  1 C2  1 C3  
+set seed107 1 C1  1 C2  1 C3  
+set seed108 1 C1  1 C2  1 C3  
+set seed109 1 C1  1 C2  1 C3  
+set seed110 1 C1  1 C2  1 C3  
+set seed111 1 C1  1 C2  1 C3  
+set seed112 1 C1  1 C2  1 C3  
+set seed113 1 C1  1 C2  1 C3  
+set seed114 1 C1  1 C2  1 C3  
+set seed115 1 C1  1 C2  1 C3  
+set seed116 1 C1  1 C2  1 C3  
+set seed117 1 CL11  1 C1  1 C2  
+set seed118 1 CL11  1 C1  1 C2  
+set seed119 1 Cl11  1 C1  1 C2  
+set seed120 1 BR11  1 C1  1 C2  
+set seed121 1 BR11  1 C1  1 C2  
+set seed122 1 BR11  1 C1  1 C2  
+set seed123 1 I11  1 C1  1 C2  
+set seed124 1 I11  1 C1  1 C2  
+set seed125 1 I11  1 C1  1 C2  
+set seed126 1 F11  1 C1  1 C2  
+set seed127 1 F11  1 C1  1 C2  
+set seed128 1 F11  1 C1  1 C2  
+
+set seed129 1 H11 1 C1  1 N1 
+set seed130 1 H11 1 C1  1 N1 
+set seed131 1 H11 1 C1  1 N1 
+set seed132 1 ND1 1 CG 1 CB
+label loop_model1
+
+set residue @resi@@count
+read sequence @residue 1
+
+bomlev @boml
+generate @residue first none last none setup warn drude dmass 0.4 !show
+
+!temporary
+!if @count ge 70 then
+!IC GENERATE RTF
+!endif
+
+ic param
+ic seed @seed@@count
+ic build 
+!ic print
+coor sdrude
+coor shake
+!coor print
+bomlev 0
+
+! instead of relaxing Drude, move all Drude a little bit away from their parent atom
+coor trans xdir -0.002 ydir -0.002 zdir -0.002 sele type D* end
+
+update inbfrq -1 ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+
+if @mindr eq 0 then
+  energy
+ else
+  cons harm force 100000. sele .not. type D* end
+  mini ABNR nstep 200 nprint 20
+  ic fill
+  ic print
+  cons harm clear
+endif
+echo @residue starting E: ?ener
+
+if @?pdbdir eq 1 then
+  write psf card name @pdbdir/@residue.psf
+  write coor pdb name @pdbdir/@residue_start.pdb
+ endif
+
+if @mini ne 0 then
+  mini sd nstep 1000 tolgrd 0.0001 nprint 100
+  if ?grms gt 0.0001 mini abnr nstep 1000 tolgrd 0.0001
+  if ?grms gt 0.0001 then
+    echo FATAL ERROR: MINIMIZATION NOT CONVERGED
+    echu
+    echo FATAL ERROR: MINIMIZATION NOT CONVERGED
+    stop
+   endif
+  echo @residue minimized E: ?ener
+  if @?pdbdir eq 1 then ! cannot use 1-line syntax because substitution will fail
+    write coor pdb name @pdbdir/@residue_min.pdb
+   endif
+ endif
+
+coor orient
+coor dipole oxyz select all end 
+echo @residue dipole: ?rdip
+!! Check molecular polarizability
+!VIBRAN
+!diag dscf fini step 0.001
+!END
+
+shake off
+drude reset
+lone clear
+delete atom sele all end
+
+incr count
+if count le @nres goto loop_model1
+
+!Complexes. Explicit complexes are generated and the coordinates read.
+
+! chlb/brob - protein model compounds total energy
+
+set residue1 chlb
+set residue2 acem
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        35  EXT
+         1         1  CHLB      C1              1.2240686452       -0.1731603327       -0.0000001099  CHLB      1               0.0000000000
+         2         1  CHLB      DC1             1.2190542360       -0.1766688440       -0.0039106316  CHLB      1               0.0000000000
+         3         1  CHLB      H1              2.1551431655        0.3709492180        0.0000001411  CHLB      1               0.0000000000
+         4         1  CHLB      C2              1.2246249600       -1.5874001736       -0.0000001677  CHLB      1               0.0000000000
+         5         1  CHLB      DC2             1.2225465438       -1.5959797648       -0.0004184457  CHLB      1               0.0000000000
+         6         1  CHLB      H2              2.1599528067       -2.1251229112        0.0000000695  CHLB      1               0.0000000000
+         7         1  CHLB      C3             -0.0000000607       -2.2945005702       -0.0000001092  CHLB      1               0.0000000000
+         8         1  CHLB      DC3            -0.0000000145       -2.2886745455       -0.0007279801  CHLB      1               0.0000000000
+         9         1  CHLB      H3             -0.0000001029       -3.3737877976        0.0000000365  CHLB      1               0.0000000000
+        10         1  CHLB      C4             -1.2246250286       -1.5874000787       -0.0000001677  CHLB      1               0.0000000000
+        11         1  CHLB      DC4            -1.2225465414       -1.5959797097       -0.0004184158  CHLB      1               0.0000000000
+        12         1  CHLB      H4             -2.1599529163       -2.1251227449        0.0000000695  CHLB      1               0.0000000000
+        13         1  CHLB      C5             -1.2240686051       -0.1731602394       -0.0000001099  CHLB      1               0.0000000000
+        14         1  CHLB      DC5            -1.2190541148       -0.1766688183       -0.0039104823  CHLB      1               0.0000000000
+        15         1  CHLB      H5             -2.1551430829        0.3709493836        0.0000001411  CHLB      1               0.0000000000
+        16         1  CHLB      C6              0.0000000470        0.5341386968        0.0000184477  CHLB      1               0.0000000000
+        17         1  CHLB      DC6             0.0000001193        0.5287559029       -0.0046569525  CHLB      1               0.0000000000
+        18         1  CHLB      CL6             0.0000001122        2.2835595826        0.0000185137  CHLB      1               0.0000000000
+        19         1  CHLB      DCL6            0.0000001720        2.2692616623       -0.0040456656  CHLB      1               0.0000000000
+        20         1  CHLB      LP6             0.0000001733        3.9235595826        0.0000185755  CHLB      1               0.0000000000
+        21         2  ACEM      CL              0.0000931721        3.2495788990       -6.1415496360  CHLB      2               0.0000000000
+        22         2  ACEM      DCL             0.0000925244        3.2019086621       -6.0986075637  CHLB      2               0.0000000000
+        23         2  ACEM      C               0.0000739983        3.4266440828       -4.8752165459  CHLB      2               0.0000000000
+        24         2  ACEM      DC              0.0000740924        3.4496920787       -4.8812174099  CHLB      2               0.0000000000
+        25         2  ACEM      N               0.0000639849        2.2835597518       -4.2169485099  CHLB      2               0.0000000000
+        26         2  ACEM      DN              0.0000643637        2.2869594267       -4.2397686938  CHLB      2               0.0000000000
+        27         2  ACEM      HC              0.0000485814        2.2835597045       -3.1999814041  CHLB      2               0.0000000000
+        28         2  ACEM      HT              0.0000713523        1.3953725537       -4.7055623433  CHLB      2               0.0000000000
+        29         2  ACEM      O               0.0000647308        4.5221762223       -4.2606388129  CHLB      2               0.0000000000
+        30         2  ACEM      DO              0.0000646525        4.4828540967       -4.2552648647  CHLB      2               0.0000000000
+        31         2  ACEM      HL1             0.0001008822        4.2389180460       -6.6481352390  CHLB      2               0.0000000000
+        32         2  ACEM      HL2             0.9031423797        2.6801568955       -6.4489015097  CHLB      2               0.0000000000
+        33         2  ACEM      HL3            -0.9029467672        2.6801569632       -6.4489288656  CHLB      2               0.0000000000
+        34         2  ACEM      LPA             0.0000686600        4.6734974230       -4.5196791460  CHLB      2               0.0000000000
+        35         2  ACEM      LPB             0.0000607243        4.3799875796       -3.9964752464  CHLB      2               0.0000000000
+
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+!-----------------------------------------------------------------------
+set residue1 chlb
+set residue2 nma
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        39  EXT
+         1         1  CHLB      C1              1.2240686830       -0.1731604439       -0.0000000017  CHLB      1               0.0000000000
+         2         1  CHLB      DC1             1.2227048917       -0.1822779234       -0.0004460188  CHLB      1               0.0000000000
+         3         1  CHLB      H1              2.1551430081        0.3709492737        0.0000000067  CHLB      1               0.0000000000
+         4         1  CHLB      C2              1.2246250459       -1.5874003068       -0.0000000053  CHLB      1               0.0000000000
+         5         1  CHLB      DC2             1.2233903016       -1.5994133629       -0.0000295821  CHLB      1               0.0000000000
+         6         1  CHLB      H2              2.1599526970       -2.1251228170        0.0000000037  CHLB      1               0.0000000000
+         7         1  CHLB      C3             -0.0000000607       -2.2945008186       -0.0000000041  CHLB      1               0.0000000000
+         8         1  CHLB      DC3             0.0000000275       -2.2919381166       -0.0000611622  CHLB      1               0.0000000000
+         9         1  CHLB      H3             -0.0000001029       -3.3737876539        0.0000000019  CHLB      1               0.0000000000
+        10         1  CHLB      C4             -1.2246251145       -1.5874002119       -0.0000000053  CHLB      1               0.0000000000
+        11         1  CHLB      DC4            -1.2233902083       -1.5994133366       -0.0000295732  CHLB      1               0.0000000000
+        12         1  CHLB      H4             -2.1599528066       -2.1251226507        0.0000000037  CHLB      1               0.0000000000
+        13         1  CHLB      C5             -1.2240686429       -0.1731603506       -0.0000000017  CHLB      1               0.0000000000
+        14         1  CHLB      DC5            -1.2227045723       -0.1822780317       -0.0004459509  CHLB      1               0.0000000000
+        15         1  CHLB      H5             -2.1551429256        0.3709494393        0.0000000067  CHLB      1               0.0000000000
+        16         1  CHLB      C6              0.0000000474        0.5341392469       -0.0000000389  CHLB      1               0.0000000000
+        17         1  CHLB      DC6             0.0000001853        0.5210864606       -0.0004597070  CHLB      1               0.0000000000
+        18         1  CHLB      CL6             0.0000001118        2.2835580133        0.0000000116  CHLB      1               0.0000000000
+        19         1  CHLB      DCL6            0.0000004758        2.2487222861       -0.0013317817  CHLB      1               0.0000000000
+        20         1  CHLB      LP6             0.0000001722        3.9235580133        0.0000000589  CHLB      1               0.0000000000
+        21         2  NMA       CL              0.0000003588        7.3712656276        1.3788106607  CHLB      2               0.0000000000
+        22         2  NMA       DCL             0.0000005646        7.3817715750        1.3375910057  CHLB      2               0.0000000000
+        23         2  NMA       HL1             0.0000003643        6.5879475026        2.1678120152  CHLB      2               0.0000000000
+        24         2  NMA       HL2             0.9103994990        7.9966205611        1.4814837137  CHLB      2               0.0000000000
+        25         2  NMA       HL3            -0.9103987266        7.9966206280        1.4814837930  CHLB      2               0.0000000000
+        26         2  NMA       C               0.0000002754        6.7388877066        0.0000001366  CHLB      2               0.0000000000
+        27         2  NMA       DC              0.0000042836        6.7333679921       -0.0127297128  CHLB      2               0.0000000000
+        28         2  NMA       O               0.0000002293        5.4835579816        0.0000000965  CHLB      2               0.0000000000
+        29         2  NMA       DO              0.0000018953        5.5045743747       -0.0123992803  CHLB      2               0.0000000000
+        30         2  NMA       N               0.0000002401        7.4973600415       -1.1231550702  CHLB      2               0.0000000000
+        31         2  NMA       DN             -0.0000008869        7.4987355249       -1.1098947956  CHLB      2               0.0000000000
+        32         2  NMA       H               0.0000002969        8.5140270578       -1.0052871600  CHLB      2               0.0000000000
+        33         2  NMA       CC              0.0000002066        6.9108944031       -2.4687405343  CHLB      2               0.0000000000
+        34         2  NMA       DCC            -0.0000001157        6.9355863835       -2.5200561272  CHLB      2               0.0000000000
+        35         2  NMA       HC1             0.0000001636        7.5736675465       -3.3658798813  CHLB      2               0.0000000000
+        36         2  NMA       HC2             0.8365984026        6.2453210678       -2.7869276802  CHLB      2               0.0000000000
+        37         2  NMA       HC3            -0.8348365339        6.2452629210       -2.7896066932  CHLB      2               0.0000000000
+        38         2  NMA       LPA             0.0000002422        5.4783222501        0.2999544049  CHLB      2               0.0000000000
+        39         2  NMA       LPB             0.0000002161        5.4783222693       -0.2999542122  CHLB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+!-----------------------------------------------------------------------
+set residue1 chlb
+set residue2 meoh
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        30  EXT
+         1         1  CHLB      C1              1.2240686423       -0.1731603101       -0.0000000600  CHLB      1               0.0000000000
+         2         1  CHLB      DC1             1.2191345232       -0.1731346348       -0.0003092632  CHLB      1               0.0000000000
+         3         1  CHLB      H1              2.1551431870        0.3709490759       -0.0000000203  CHLB      1               0.0000000000
+         4         1  CHLB      C2              1.2246249731       -1.5874001609        0.0000000310  CHLB      1               0.0000000000
+         5         1  CHLB      DC2             1.2222200664       -1.5946382270        0.0008948085  CHLB      1               0.0000000000
+         6         1  CHLB      H2              2.1599527915       -2.1251229176       -0.0000000604  CHLB      1               0.0000000000
+         7         1  CHLB      C3             -0.0000000607       -2.2945005281        0.0000000634  CHLB      1               0.0000000000
+         8         1  CHLB      DC3            -0.0000000681       -2.2877092549        0.0005922135  CHLB      1               0.0000000000
+         9         1  CHLB      H3             -0.0000001029       -3.3737878063       -0.0000000471  CHLB      1               0.0000000000
+        10         1  CHLB      C4             -1.2246250417       -1.5874000660        0.0000000310  CHLB      1               0.0000000000
+        11         1  CHLB      DC4            -1.2222201525       -1.5946381361        0.0008947919  CHLB      1               0.0000000000
+        12         1  CHLB      H4             -2.1599529011       -2.1251227513       -0.0000000604  CHLB      1               0.0000000000
+        13         1  CHLB      C5             -1.2240686022       -0.1731602168       -0.0000000600  CHLB      1               0.0000000000
+        14         1  CHLB      DC5            -1.2191344964       -0.1731345893       -0.0003092475  CHLB      1               0.0000000000
+        15         1  CHLB      H5             -2.1551431043        0.3709492415       -0.0000000203  CHLB      1               0.0000000000
+        16         1  CHLB      C6              0.0000000475        0.5341386365        0.0000131097  CHLB      1               0.0000000000
+        17         1  CHLB      DC6             0.0000000733        0.5338430139       -0.0026495372  CHLB      1               0.0000000000
+        18         1  CHLB      CL6             0.0000001115        2.2835598267        0.0000133268  CHLB      1               0.0000000000
+        19         1  CHLB      DCL6            0.0000001881        2.2799112859       -0.0072223649  CHLB      1               0.0000000000
+        20         1  CHLB      LP6             0.0000001714        3.9235598267        0.0000135303  CHLB      1               0.0000000000
+        21         2  MEOH      C1              0.0000494489        3.6461372354       -4.6051178720  CHLB      2               0.0000000000
+        22         2  MEOH      DC1             0.0000494698        3.6473361750       -4.6067335094  CHLB      2               0.0000000000
+        23         2  MEOH      O1              0.0000447673        2.2835603264       -4.1723622554  CHLB      2               0.0000000000
+        24         2  MEOH      DO1             0.0000448283        2.2837269935       -4.1757617687  CHLB      2               0.0000000000
+        25         2  MEOH      HO1             0.0000343603        2.2835602090       -3.1999865770  CHLB      2               0.0000000000
+        26         2  MEOH      H1A             0.0000613495        3.6819472537       -5.7169231080  CHLB      2               0.0000000000
+        27         2  MEOH      H1B            -0.9079601145        4.1663538281       -4.2284793651  CHLB      2               0.0000000000
+        28         2  MEOH      H1C             0.9080509879        4.1663537617       -4.2284599288  CHLB      2               0.0000000000
+        29         2  MEOH      LP1A           -0.3287978915        2.1677317778       -4.1416010291  CHLB      2               0.0000000000
+        30         2  MEOH      LP1B            0.3288867592        2.1677317537       -4.1415939901  CHLB      2               0.0000000000
+
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+!-----------------------------------------------------------------------
+set residue1 chlb
+set residue2 phen
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        42  EXT
+         1         1  CHLB      C1              1.2240686662       -0.1731608818       -0.0000001024  CHLB      1               0.0000000000
+         2         1  CHLB      DC1             1.2185724473       -0.1723855071       -0.0012346345  CHLB      1               0.0000000000
+         3         1  CHLB      H1              2.1551433064        0.3709483696        0.0000000051  CHLB      1               0.0000000000
+         4         1  CHLB      C2              1.2246247657       -1.5874007286        0.0000000021  CHLB      1               0.0000000000
+         5         1  CHLB      DC2             1.2221040004       -1.5941668434        0.0007939753  CHLB      1               0.0000000000
+         6         1  CHLB      H2              2.1599525667       -2.1251236327       -0.0000000446  CHLB      1               0.0000000000
+         7         1  CHLB      C3             -0.0000003904       -2.2945008802        0.0000000410  CHLB      1               0.0000000000
+         8         1  CHLB      DC3            -0.0000003908       -2.2872383403        0.0004204670  CHLB      1               0.0000000000
+         9         1  CHLB      H3             -0.0000005992       -3.3737882344       -0.0000000380  CHLB      1               0.0000000000
+        10         1  CHLB      C4             -1.2246252542       -1.5874002024        0.0000000021  CHLB      1               0.0000000000
+        11         1  CHLB      DC4            -1.2221044990       -1.5941663255        0.0007939630  CHLB      1               0.0000000000
+        12         1  CHLB      H4             -2.1599532558       -2.1251227633       -0.0000000446  CHLB      1               0.0000000000
+        13         1  CHLB      C5             -1.2240685533       -0.1731603240       -0.0000001024  CHLB      1               0.0000000000
+        14         1  CHLB      DC5            -1.2185723280       -0.1723850150       -0.0012345927  CHLB      1               0.0000000000
+        15         1  CHLB      H5             -2.1551429854        0.3709492844        0.0000000051  CHLB      1               0.0000000000
+        16         1  CHLB      C6              0.0000002168        0.5341385452        0.0000143158  CHLB      1               0.0000000000
+        17         1  CHLB      DC6             0.0000002571        0.5348260216       -0.0036348493  CHLB      1               0.0000000000
+        18         1  CHLB      CL6             0.0000010744        2.2835577826        0.0000152263  CHLB      1               0.0000000000
+        19         1  CHLB      DCL6            0.0000011877        2.2817495101       -0.0094666808  CHLB      1               0.0000000000
+        20         1  CHLB      LP6             0.0000018783        3.9235577826        0.0000160799  CHLB      1               0.0000000000
+        21         2  PHEN      CG              0.0000643363        6.3466504445       -5.3260276218  CHLB      2               0.0000000000
+        22         2  PHEN      DCG             0.0000639717        6.3154731901       -5.2955710948  CHLB      2               0.0000000000
+        23         2  PHEN      HG              0.0000682690        7.3856324123       -5.6234689294  CHLB      2               0.0000000000
+        24         2  PHEN      CD1             0.0000751672        5.3337260691       -6.3110663179  CHLB      2               0.0000000000
+        25         2  PHEN      DCD1            0.0000752161        5.3617581841       -6.3140084880  CHLB      2               0.0000000000
+        26         2  PHEN      HD1             0.0000873422        5.5975824623       -7.3583092538  CHLB      2               0.0000000000
+        27         2  PHEN      CD2             0.0000484003        6.0043256118       -3.9551554976  CHLB      2               0.0000000000
+        28         2  PHEN      DCD2            0.0000482042        5.9975929795       -3.9382870133  CHLB      2               0.0000000000
+        29         2  PHEN      HD2             0.0000401884        6.7838931559       -3.2078020689  CHLB      2               0.0000000000
+        30         2  PHEN      CE1             0.0000700212        3.9727097229       -5.9219279326  CHLB      2               0.0000000000
+        31         2  PHEN      DCE1            0.0000700242        3.9710139036       -5.9219819745  CHLB      2               0.0000000000
+        32         2  PHEN      HE1             0.0000781107        3.1865808734       -6.6589099521  CHLB      2               0.0000000000
+        33         2  PHEN      CE2             0.0000432851        4.6426319562       -3.5687107052  CHLB      2               0.0000000000
+        34         2  PHEN      DCE2            0.0000431801        4.5854035680       -3.5614653742  CHLB      2               0.0000000000
+        35         2  PHEN      HE2             0.0000311441        4.3793610935       -2.5244062169  CHLB      2               0.0000000000
+        36         2  PHEN      CZ              0.0000541078        3.6318142874       -4.5529373541  CHLB      2               0.0000000000
+        37         2  PHEN      DCZ             0.0000543794        3.6362633584       -4.5759572983  CHLB      2               0.0000000000
+        38         2  PHEN      OH              0.0000488980        2.2835599144       -4.1577086474  CHLB      2               0.0000000000
+        39         2  PHEN      DOH             0.0000489481        2.2794683289       -4.1605286100  CHLB      2               0.0000000000
+        40         2  PHEN      HH              0.0000378845        2.2835594109       -3.1999846716  CHLB      2               0.0000000000
+        41         2  PHEN      LP1A           -0.3268732694        2.1621384607       -4.1280653172  CHLB      2               0.0000000000
+        42         2  PHEN      LP1B            0.3269702639        2.1621381384       -4.1280577982  CHLB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+!-----------------------------------------------------------------------
+set residue1 chlb
+set residue2 acet
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        35  EXT
+         1         1  CHLB      C1              1.2240641422       -0.1731538632        0.0000003288  CHLB      1               0.0000000000
+         2         1  CHLB      DC1             1.2258826091       -0.1991880345       -0.0007781273  CHLB      1               0.0000000000
+         3         1  CHLB      H1              2.1551418133        0.3709499779        0.0000000350  CHLB      1               0.0000000000
+         4         1  CHLB      C2              1.2246238765       -1.5873932405        0.0000001331  CHLB      1               0.0000000000
+         5         1  CHLB      DC2             1.2256685053       -1.6096893094       -0.0000699398  CHLB      1               0.0000000000
+         6         1  CHLB      H2              2.1599522147       -2.1251220875        0.0000000187  CHLB      1               0.0000000000
+         7         1  CHLB      C3             -0.0000000619       -2.2944983378        0.0000001472  CHLB      1               0.0000000000
+         8         1  CHLB      DC3            -0.0000001176       -2.3014700058       -0.0001199453  CHLB      1               0.0000000000
+         9         1  CHLB      H3             -0.0000001029       -3.3737867739        0.0000000115  CHLB      1               0.0000000000
+        10         1  CHLB      C4             -1.2246239363       -1.5873931436        0.0000001331  CHLB      1               0.0000000000
+        11         1  CHLB      DC4            -1.2256685522       -1.6096890560       -0.0000699422  CHLB      1               0.0000000000
+        12         1  CHLB      H4             -2.1599523243       -2.1251219211        0.0000000187  CHLB      1               0.0000000000
+        13         1  CHLB      C5             -1.2240640756       -0.1731537565        0.0000003288  CHLB      1               0.0000000000
+        14         1  CHLB      DC5            -1.2258823127       -0.1991880177       -0.0007781396  CHLB      1               0.0000000000
+        15         1  CHLB      H5             -2.1551417319        0.3709501474        0.0000000350  CHLB      1               0.0000000000
+        16         1  CHLB      C6              0.0000162728        0.5343922450        0.0000086025  CHLB      1               0.0000000000
+        17         1  CHLB      DC6             0.0000166155        0.5019209348       -0.0007525380  CHLB      1               0.0000000000
+        18         1  CHLB      CL6            -0.0000006397        2.2829173116        0.0000056181  CHLB      1               0.0000000000
+        19         1  CHLB      DCL6            0.0000000891        2.2013421522       -0.0019441605  CHLB      1               0.0000000000
+        20         1  CHLB      LP6            -0.0000165025        3.9229173115        0.0000028188  CHLB      1               0.0000000000
+        21         2  ACET      C1             -0.0000384584        7.3436384082       -1.4365677903  CHLB      2               0.0000000000
+        22         2  ACET      DC1            -0.0000384787        7.3428927028       -1.4337918659  CHLB      2               0.0000000000
+        23         2  ACET      H1             -0.0000493177        8.4540048067       -1.4212304320  CHLB      2               0.0000000000
+        24         2  ACET      H2              0.9064195378        6.9950663113       -1.9761035829  CHLB      2               0.0000000000
+        25         2  ACET      H3             -0.9064813489        6.9950487754       -1.9761176317  CHLB      2               0.0000000000
+        26         2  ACET      C2             -0.0000438926        6.7545351617       -0.0000021079  CHLB      2               0.0000000000
+        27         2  ACET      DC2            -0.0000438228        6.7470194638        0.0001330519  CHLB      2               0.0000000000
+        28         2  ACET      O1             -0.0000315925        5.4829171596        0.0000002008  CHLB      2               0.0000000000
+        29         2  ACET      DO1            -0.0000315236        5.4748932101       -0.0003113560  CHLB      2               0.0000000000
+        30         2  ACET      O2             -0.0000592602        7.5478056212        0.9929074316  CHLB      2               0.0000000000
+        31         2  ACET      DO2            -0.0000592359        7.5476514653        0.9895509084  CHLB      2               0.0000000000
+        32         2  ACET      LP1A           -0.0000278859        5.3632095123       -0.3288919991  CHLB      2               0.0000000000
+        33         2  ACET      LP1B           -0.0000329833        5.3632107065        0.3288928354  CHLB      2               0.0000000000
+        34         2  ACET      LP2A           -0.0000616023        7.8794805216        0.8811408874  CHLB      2               0.0000000000
+        35         2  ACET      LP2B           -0.0000598131        7.3655700564        1.2917220881  CHLB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+!!
+!-----------------------------------------------------------------------
+set residue1 chlb
+set residue2 nc1
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        30  EXT
+         1         1  CHLB      C1              1.2240683681       -0.1731595690       -0.0000009067  CHLB      1               0.0000000000
+         2         1  CHLB      DC1             1.2138236468       -0.1590226690       -0.0230860887  CHLB      1               0.0000000000
+         3         1  CHLB      H1              2.1551436005        0.3709486665        0.0000006568  CHLB      1               0.0000000000
+         4         1  CHLB      C2              1.2246247550       -1.5873994566       -0.0000004911  CHLB      1               0.0000000000
+         5         1  CHLB      DC2             1.2203319301       -1.5844265985       -0.0022460270  CHLB      1               0.0000000000
+         6         1  CHLB      H2              2.1599531991       -2.1251235306        0.0000003340  CHLB      1               0.0000000000
+         7         1  CHLB      C3             -0.0000000617       -2.2944996945       -0.0000003406  CHLB      1               0.0000000000
+         8         1  CHLB      DC3            -0.0000139607       -2.2776617306       -0.0035601537  CHLB      1               0.0000000000
+         9         1  CHLB      H3             -0.0000001025       -3.3737886148        0.0000001570  CHLB      1               0.0000000000
+        10         1  CHLB      C4             -1.2246248250       -1.5873993609       -0.0000004927  CHLB      1               0.0000000000
+        11         1  CHLB      DC4            -1.2203555613       -1.5844186948       -0.0022560092  CHLB      1               0.0000000000
+        12         1  CHLB      H4             -2.1599533079       -2.1251233648        0.0000003350  CHLB      1               0.0000000000
+        13         1  CHLB      C5             -1.2240683286       -0.1731594754       -0.0000009110  CHLB      1               0.0000000000
+        14         1  CHLB      DC5            -1.2138510849       -0.1590158925       -0.0231037597  CHLB      1               0.0000000000
+        15         1  CHLB      H5             -2.1551435174        0.3709488326        0.0000006574  CHLB      1               0.0000000000
+        16         1  CHLB      C6              0.0000000483        0.5341390413        0.0000152392  CHLB      1               0.0000000000
+        17         1  CHLB      DC6            -0.0000116539        0.5446699540       -0.0237345365  CHLB      1               0.0000000000
+        18         1  CHLB      CL6             0.0000001134        2.2835600991        0.0000162415  CHLB      1               0.0000000000
+        19         1  CHLB      DCL6           -0.0000170392        2.2818866049       -0.0309166089  CHLB      1               0.0000000000
+        20         1  CHLB      LP6             0.0000001746        3.9235600991        0.0000171812  CHLB      1               0.0000000000
+        21         2  NC1       N               0.0000547079        2.2835624785       -4.2291565171  CHLB      2               0.0000000000
+        22         2  NC1       DN              0.0000388325        2.2851409650       -4.2363210645  CHLB      2               0.0000000000
+        23         2  NC1       C1             -0.0504810898        3.7133689239       -4.7831839995  CHLB      2               0.0000000000
+        24         2  NC1       DC1            -0.0505824242        3.7161603795       -4.7867743225  CHLB      2               0.0000000000
+        25         2  NC1       HN2             0.0000414223        2.2835618663       -3.1999835607  CHLB      2               0.0000000000
+        26         2  NC1       HN3             0.8490526156        1.7933957648       -4.5424226229  CHLB      2               0.0000000000
+        27         2  NC1       HN4            -0.8122049258        1.7346711270       -4.5424440866  CHLB      2               0.0000000000
+        28         2  NC1       H11            -0.0502765798        3.7081410239       -5.8689173500  CHLB      2               0.0000000000
+        29         2  NC1       H12             0.8081991018        4.2882793828       -4.4500314847  CHLB      2               0.0000000000
+        30         2  NC1       H13            -0.9476269884        4.2262082411       -4.4500633361  CHLB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+!-----------------------------------------------------------------------
+set residue1 chlb
+set residue2 mguan
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        38  EXT
+         1         1  CHLB      C1              1.2240684576       -0.1731598691       -0.0000004858  CHLB      1               0.0000000000
+         2         1  CHLB      DC1             1.2150289204       -0.1617727068       -0.0163657675  CHLB      1               0.0000000000
+         3         1  CHLB      H1              2.1551435160        0.3709487514        0.0000004210  CHLB      1               0.0000000000
+         4         1  CHLB      C2              1.2246247930       -1.5873996330       -0.0000003820  CHLB      1               0.0000000000
+         5         1  CHLB      DC2             1.2206505732       -1.5865209473       -0.0017891538  CHLB      1               0.0000000000
+         6         1  CHLB      H2              2.1599531069       -2.1251233899        0.0000002562  CHLB      1               0.0000000000
+         7         1  CHLB      C3             -0.0000000607       -2.2944998590       -0.0000002739  CHLB      1               0.0000000000
+         8         1  CHLB      DC3             0.0000001245       -2.2796617966       -0.0028537024  CHLB      1               0.0000000000
+         9         1  CHLB      H3             -0.0000001029       -3.3737884326        0.0000001441  CHLB      1               0.0000000000
+        10         1  CHLB      C4             -1.2246248616       -1.5873995381       -0.0000003820  CHLB      1               0.0000000000
+        11         1  CHLB      DC4            -1.2206503289       -1.5865209998       -0.0017890723  CHLB      1               0.0000000000
+        12         1  CHLB      H4             -2.1599532165       -2.1251232236        0.0000002562  CHLB      1               0.0000000000
+        13         1  CHLB      C5             -1.2240684175       -0.1731597758       -0.0000004858  CHLB      1               0.0000000000
+        14         1  CHLB      DC5            -1.2150284432       -0.1617729134       -0.0163653551  CHLB      1               0.0000000000
+        15         1  CHLB      H5             -2.1551434334        0.3709489170        0.0000004210  CHLB      1               0.0000000000
+        16         1  CHLB      C6              0.0000000473        0.5341388239        0.0000183475  CHLB      1               0.0000000000
+        17         1  CHLB      DC6             0.0000003138        0.5436141507       -0.0172013787  CHLB      1               0.0000000000
+        18         1  CHLB      CL6             0.0000001118        2.2835602776        0.0000192295  CHLB      1               0.0000000000
+        19         1  CHLB      DCL6            0.0000004897        2.2885581369       -0.0253566495  CHLB      1               0.0000000000
+        20         1  CHLB      LP6             0.0000001721        3.9235602776        0.0000200562  CHLB      1               0.0000000000
+        21         2  MGUAN     C               0.0000744989        3.4332744867       -4.9119060356  CHLB      2               0.0000000000
+        22         2  MGUAN     DC              0.0000747465        3.4441362809       -4.9279602173  CHLB      2               0.0000000000
+        23         2  MGUAN     N1              0.0000636806        2.2835623545       -4.1999469165  CHLB      2               0.0000000000
+        24         2  MGUAN     DN1             0.0000642877        2.3423575600       -4.2386526566  CHLB      2               0.0000000000
+        25         2  MGUAN     H11             0.0000485456        2.2835618233       -3.1999805857  CHLB      2               0.0000000000
+        26         2  MGUAN     H12             0.0000702707        1.3846754980       -4.6375439098  CHLB      2               0.0000000000
+        27         2  MGUAN     N2              0.0000645338        4.6112102278       -4.2506495701  CHLB      2               0.0000000000
+        28         2  MGUAN     DN2             0.0000649186        4.5589912790       -4.2759294426  CHLB      2               0.0000000000
+        29         2  MGUAN     H21             0.0000494126        4.6509352494       -3.2515024863  CHLB      2               0.0000000000
+        30         2  MGUAN     H22             0.0000717302        5.4902202675       -4.7239739617  CHLB      2               0.0000000000
+        31         2  MGUAN     N3              0.0000950864        3.3816214166       -6.2722435456  CHLB      2               0.0000000000
+        32         2  MGUAN     DN3             0.0000940332        3.3880533317       -6.2024406276  CHLB      2               0.0000000000
+        33         2  MGUAN     H31             0.0001017840        2.4833242507       -6.7169380731  CHLB      2               0.0000000000
+        34         2  MGUAN     C2              0.0001078509        4.6234500149       -7.1125596047  CHLB      2               0.0000000000
+        35         2  MGUAN     DC2             0.0001084957        4.6410164241       -7.1549531668  CHLB      2               0.0000000000
+        36         2  MGUAN     HC1             0.0001241373        4.3369977599       -8.1892946583  CHLB      2               0.0000000000
+        37         2  MGUAN     HC2            -0.9125087594        5.2273606635       -6.9041215824  CHLB      2               0.0000000000
+        38         2  MGUAN     HC3             0.9127181955        5.2273605962       -6.9040939565  CHLB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+!-----------------------------------------------------------------------
+set residue1 chlb
+set residue2 imid
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        35  EXT
+         1         1  CHLB      C1              1.2240686155       -0.1731602472       -0.0000001414  CHLB      1               0.0000000000
+         2         1  CHLB      DC1             1.2188911494       -0.1716981024       -0.0033357759  CHLB      1               0.0000000000
+         3         1  CHLB      H1              2.1551432050        0.3709490317        0.0000000938  CHLB      1               0.0000000000
+         4         1  CHLB      C2              1.2246249458       -1.5874000487       -0.0000000599  CHLB      1               0.0000000000
+         5         1  CHLB      DC2             1.2221912721       -1.5934420091        0.0006548280  CHLB      1               0.0000000000
+         6         1  CHLB      H2              2.1599528234       -2.1251229964       -0.0000000279  CHLB      1               0.0000000000
+         7         1  CHLB      C3             -0.0000000518       -2.2945004022        0.0000000093  CHLB      1               0.0000000000
+         8         1  CHLB      DC3             0.0001168943       -2.2865698445        0.0003441489  CHLB      1               0.0000000000
+         9         1  CHLB      H3             -0.0000001090       -3.3737879030       -0.0000000540  CHLB      1               0.0000000000
+        10         1  CHLB      C4             -1.2246250003       -1.5873999486       -0.0000000607  CHLB      1               0.0000000000
+        11         1  CHLB      DC4            -1.2219139709       -1.5933888720        0.0007111960  CHLB      1               0.0000000000
+        12         1  CHLB      H4             -2.1599529513       -2.1251228324       -0.0000000343  CHLB      1               0.0000000000
+        13         1  CHLB      C5             -1.2240685719       -0.1731601363       -0.0000001551  CHLB      1               0.0000000000
+        14         1  CHLB      DC5            -1.2186640126       -0.1715459248       -0.0035716723  CHLB      1               0.0000000000
+        15         1  CHLB      H5             -2.1551431468        0.3709491846        0.0000001133  CHLB      1               0.0000000000
+        16         1  CHLB      C6              0.0000000162        0.5341386736        0.0000167955  CHLB      1               0.0000000000
+        17         1  CHLB      DC6            -0.0000524022        0.5343169059       -0.0053940648  CHLB      1               0.0000000000
+        18         1  CHLB      CL6             0.0000000793        2.2835598824        0.0000171513  CHLB      1               0.0000000000
+        19         1  CHLB      DCL6           -0.0001189591        2.2779174145       -0.0091161976  CHLB      1               0.0000000000
+        20         1  CHLB      LP6             0.0000001384        3.9235598824        0.0000174849  CHLB      1               0.0000000000
+        21         2  IMID      CG              1.1055914703        2.2835627374       -5.0259038722  CHLB      2               0.0000000000
+        22         2  IMID      DCG             1.1063492458        2.2834130551       -5.0268132951  CHLB      2               0.0000000000
+        23         2  IMID      HG              2.1312372869        2.2835631199       -4.6830747587  CHLB      2               0.0000000000
+        24         2  IMID      CD2             0.6232594956        2.2835642915       -6.2970359817  CHLB      2               0.0000000000
+        25         2  IMID      DCD2            0.6150450790        2.2834136605       -6.2809597835  CHLB      2               0.0000000000
+        26         2  IMID      HD2             1.1534565083        2.2835664851       -7.2421586710  CHLB      2               0.0000000000
+        27         2  IMID      ND1             0.0000578530        2.2835607206       -4.2019411713  CHLB      2               0.0000000000
+        28         2  IMID      DND1            0.0017586912        2.2837324198       -4.2069629498  CHLB      2               0.0000000000
+        29         2  IMID      HD1             0.0000440761        2.2835605190       -3.1999827653  CHLB      2               0.0000000000
+        30         2  IMID      CE1            -1.0880659595        2.2835609253       -5.0120554423  CHLB      2               0.0000000000
+        31         2  IMID      DCE1           -1.0769371708        2.2833929257       -5.0146574614  CHLB      2               0.0000000000
+        32         2  IMID      HE1            -2.1103072134        2.2835593519       -4.6367837315  CHLB      2               0.0000000000
+        33         2  IMID      NE2            -0.7586006123        2.2835630877       -6.2881341689  CHLB      2               0.0000000000
+        34         2  IMID      DNE2           -0.7509617146        2.2834894523       -6.2773749077  CHLB      2               0.0000000000
+        35         2  IMID      LP1            -0.9822621479        2.2835632807       -6.5573469426  CHLB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+!-----------------------------------------------------------------------
+
+set residue1 chlb
+set residue2 indo
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        45  EXT
+         1         1  CHLB      C1              1.2240689242       -0.1731602910        0.0000000665  CHLB      1               0.0000000000
+         2         1  CHLB      DC1             1.2179347686       -0.1724743721       -0.0038771147  CHLB      1               0.0000000000
+         3         1  CHLB      H1              2.1551435297        0.3709487520        0.0000002386  CHLB      1               0.0000000000
+         4         1  CHLB      C2              1.2246248564       -1.5874000132       -0.0000002691  CHLB      1               0.0000000000
+         5         1  CHLB      DC2             1.2220680424       -1.5939341990        0.0004184176  CHLB      1               0.0000000000
+         6         1  CHLB      H2              2.1599527683       -2.1251233044       -0.0000000133  CHLB      1               0.0000000000
+         7         1  CHLB      C3             -0.0000002756       -2.2945001731       -0.0000001029  CHLB      1               0.0000000000
+         8         1  CHLB      DC3            -0.0000001324       -2.2869357214       -0.0000843811  CHLB      1               0.0000000000
+         9         1  CHLB      H3             -0.0000004768       -3.3737879360       -0.0000000333  CHLB      1               0.0000000000
+        10         1  CHLB      C4             -1.2246251177       -1.5873995036       -0.0000002691  CHLB      1               0.0000000000
+        11         1  CHLB      DC4            -1.2220681243       -1.5939338887        0.0004184580  CHLB      1               0.0000000000
+        12         1  CHLB      H4             -2.1599532338       -2.1251224487       -0.0000000133  CHLB      1               0.0000000000
+        13         1  CHLB      C5             -1.2240683773       -0.1731597406        0.0000000661  CHLB      1               0.0000000000
+        14         1  CHLB      DC5            -1.2179339361       -0.1724743524       -0.0038764157  CHLB      1               0.0000000000
+        15         1  CHLB      H5             -2.1551429914        0.3709495706        0.0000002386  CHLB      1               0.0000000000
+        16         1  CHLB      C6              0.0000003433        0.5341375682        0.0000841642  CHLB      1               0.0000000000
+        17         1  CHLB      DC6             0.0000007361        0.5338222375       -0.0060768799  CHLB      1               0.0000000000
+        18         1  CHLB      CL6             0.0000001629        2.2835600171        0.0000846379  CHLB      1               0.0000000000
+        19         1  CHLB      DCL6            0.0000008506        2.2766420245       -0.0094910593  CHLB      1               0.0000000000
+        20         1  CHLB      LP6            -0.0000000062        3.9235600171        0.0000850819  CHLB      1               0.0000000000
+        21         2  INDO      CD2             0.0004339347        3.0475819565       -6.3281622520  CHLB      2               0.0000000000
+        22         2  INDO      DCD2            0.0004334439        3.0499003494       -6.3209305435  CHLB      2               0.0000000000
+        23         2  INDO      CE2             0.0003415081        3.4481011451       -4.9801766847  CHLB      2               0.0000000000
+        24         2  INDO      DCE2            0.0003420093        3.4348452636       -4.9872575475  CHLB      2               0.0000000000
+        25         2  INDO      CZ2             0.0003181476        4.8088972425       -4.6406989150  CHLB      2               0.0000000000
+        26         2  INDO      DCZ2            0.0003176258        4.7739429676       -4.6327188187  CHLB      2               0.0000000000
+        27         2  INDO      CH2             0.0003878627        5.7787483685       -5.6586839068  CHLB      2               0.0000000000
+        28         2  INDO      DCH2            0.0003864448        5.7910021298       -5.6379349095  CHLB      2               0.0000000000
+        29         2  INDO      CZ3             0.0004809457        5.3769282753       -7.0162453398  CHLB      2               0.0000000000
+        30         2  INDO      DCZ3            0.0004797285        5.3785048720       -6.9984133197  CHLB      2               0.0000000000
+        31         2  INDO      CE3             0.0005036169        4.0092544165       -7.3456605747  CHLB      2               0.0000000000
+        32         2  INDO      DCE3            0.0005037953        4.0112950159       -7.3481105710  CHLB      2               0.0000000000
+        33         2  INDO      CG              0.0004356906        1.6274218646       -6.3524021713  CHLB      2               0.0000000000
+        34         2  INDO      DCG             0.0004349863        1.6328717989       -6.3419324334  CHLB      2               0.0000000000
+        35         2  INDO      CD1             0.0003448840        1.1807615840       -5.0272286569  CHLB      2               0.0000000000
+        36         2  INDO      DCD1            0.0003452936        1.1643092989       -5.0317143173  CHLB      2               0.0000000000
+        37         2  INDO      NE1             0.0002878762        2.2835612069       -4.1966337542  CHLB      2               0.0000000000
+        38         2  INDO      DNE1            0.0002883678        2.2738522152       -4.2022693812  CHLB      2               0.0000000000
+        39         2  INDO      HZ2             0.0002476137        5.1244383741       -3.6120146080  CHLB      2               0.0000000000
+        40         2  INDO      HH2             0.0003705423        6.8279252680       -5.4070207322  CHLB      2               0.0000000000
+        41         2  INDO      HZ3             0.0005345674        6.1191533957       -7.7992290232  CHLB      2               0.0000000000
+        42         2  INDO      HE3             0.0005746316        3.7157918729       -8.3813797679  CHLB      2               0.0000000000
+        43         2  INDO      HG              0.0004953841        0.9827386514       -7.2226201355  CHLB      2               0.0000000000
+        44         2  INDO      HD1             0.0003227335        0.1523946549       -4.7030868578  CHLB      2               0.0000000000
+        45         2  INDO      HE1             0.0002195544        2.2835609558       -3.1999152120  CHLB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+!-----------------------------------------------------------------------
+
+set residue1 chlb
+set residue2 mesh
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        30  EXT
+         1         1  CHLB      C1              1.2240686547       -0.1731603508       -0.0000000578  CHLB      1               0.0000000000
+         2         1  CHLB      DC1             1.2196791157       -0.1746593438       -0.0002299880  CHLB      1               0.0000000000
+         3         1  CHLB      H1              2.1551431528        0.3709491295        0.0000000006  CHLB      1               0.0000000000
+         4         1  CHLB      C2              1.2246249745       -1.5874001659       -0.0000000175  CHLB      1               0.0000000000
+         5         1  CHLB      DC2             1.2223290395       -1.5952458841        0.0005200377  CHLB      1               0.0000000000
+         6         1  CHLB      H2              2.1599527739       -2.1251228988       -0.0000000358  CHLB      1               0.0000000000
+         7         1  CHLB      C3             -0.0000000607       -2.2945005787        0.0000000166  CHLB      1               0.0000000000
+         8         1  CHLB      DC3            -0.0000000647       -2.2882683235        0.0003447742  CHLB      1               0.0000000000
+         9         1  CHLB      H3             -0.0000001029       -3.3737877756       -0.0000000307  CHLB      1               0.0000000000
+        10         1  CHLB      C4             -1.2246250431       -1.5874000710       -0.0000000175  CHLB      1               0.0000000000
+        11         1  CHLB      DC4            -1.2223291194       -1.5952457927        0.0005200296  CHLB      1               0.0000000000
+        12         1  CHLB      H4             -2.1599528835       -2.1251227325       -0.0000000358  CHLB      1               0.0000000000
+        13         1  CHLB      C5             -1.2240686146       -0.1731602575       -0.0000000578  CHLB      1               0.0000000000
+        14         1  CHLB      DC5            -1.2196790848       -0.1746592759       -0.0002299744  CHLB      1               0.0000000000
+        15         1  CHLB      H5             -2.1551430702        0.3709492951        0.0000000006  CHLB      1               0.0000000000
+        16         1  CHLB      C6              0.0000000476        0.5341386669        0.0000126142  CHLB      1               0.0000000000
+        17         1  CHLB      DC6             0.0000000615        0.5317372340       -0.0014991108  CHLB      1               0.0000000000
+        18         1  CHLB      CL6             0.0000001113        2.2835598765        0.0000127279  CHLB      1               0.0000000000
+        19         1  CHLB      DCL6            0.0000001512        2.2789706800       -0.0039178715  CHLB      1               0.0000000000
+        20         1  CHLB      LP6             0.0000001711        3.9235598765        0.0000128344  CHLB      1               0.0000000000
+        21         2  MESH      H11             0.0000605635        4.3290621714       -5.8478992842  CHLB      2               0.0000000000
+        22         2  MESH      H12            -0.9063996340        4.5178262016       -4.2910056704  CHLB      2               0.0000000000
+        23         2  MESH      H13             0.9064886708        4.5178261318       -4.2909869787  CHLB      2               0.0000000000
+        24         2  MESH      C1              0.0000493817        4.0836126461       -4.7643080683  CHLB      2               0.0000000000
+        25         2  MESH      DC1             0.0000493987        4.0845468945       -4.7657514192  CHLB      2               0.0000000000
+        26         2  MESH      S1              0.0000471077        2.2835601548       -4.5504740321  CHLB      2               0.0000000000
+        27         2  MESH      DS1             0.0000471703        2.2836782089       -4.5534545917  CHLB      2               0.0000000000
+        28         2  MESH      HS1             0.0000331602        2.2835600724       -3.1999872313  CHLB      2               0.0000000000
+        29         2  MESH      LP1A           -0.7847997708        2.1979974138       -4.6796808224  CHLB      2               0.0000000000
+        30         2  MESH      LP1B            0.7848966486        2.1979973566       -4.6796646110  CHLB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+!-----------------------------------------------------------------------
+
+! below are bromobenzene and protein model compounds
+
+!-----------------------------------------------------------------------
+set residue1 brob
+set residue2 acem
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        35  EXT
+         1         1  BROB      C1             -1.2239938076       -0.7779222022        0.0000001535  BROB      1               0.0000000000
+         2         1  BROB      DC1            -1.2211884017       -0.7829942608        0.0027029773  BROB      1               0.0000000000
+         3         1  BROB      H1             -2.1545199244       -0.2330927111       -0.0000001964  BROB      1               0.0000000000
+         4         1  BROB      C2             -1.2249480689       -2.1921660752        0.0000002003  BROB      1               0.0000000000
+         5         1  BROB      DC2            -1.2270866907       -2.2051526175        0.0005850863  BROB      1               0.0000000000
+         6         1  BROB      H2             -2.1600630481       -2.7306259947       -0.0000000729  BROB      1               0.0000000000
+         7         1  BROB      C3             -0.0000002243       -2.8984858236        0.0000000899  BROB      1               0.0000000000
+         8         1  BROB      DC3            -0.0000003080       -2.8829658299        0.0007335616  BROB      1               0.0000000000
+         9         1  BROB      H3             -0.0000002890       -3.9778056005       -0.0000000434  BROB      1               0.0000000000
+        10         1  BROB      C4              1.2249477213       -2.1921662006        0.0000002003  BROB      1               0.0000000000
+        11         1  BROB      DC4             1.2270862247       -2.2051528209        0.0005850475  BROB      1               0.0000000000
+        12         1  BROB      H4              2.1600626193       -2.7306262595       -0.0000000729  BROB      1               0.0000000000
+        13         1  BROB      C5              1.2239936120       -0.7779223211        0.0000001535  BROB      1               0.0000000000
+        14         1  BROB      DC5             1.2211880431       -0.7829944816        0.0027027140  BROB      1               0.0000000000
+        15         1  BROB      H5              2.1545198008       -0.2330929494       -0.0000001963  BROB      1               0.0000000000
+        16         1  BROB      C6             -0.0000000633       -0.0706127625       -0.0000368339  BROB      1               0.0000000000
+        17         1  BROB      DC6            -0.0000002058       -0.0786423537        0.0042607207  BROB      1               0.0000000000
+        18         1  BROB      BR6            -0.0000002230        1.8283834197       -0.0000361473  BROB      1               0.0000000000
+        19         1  BROB      DBR6           -0.0000003125        1.8018679209        0.0031090619  BROB      1               0.0000000000
+        20         1  BROB      LP6            -0.0000003788        3.6783834197       -0.0000354782  BROB      1               0.0000000000
+        21         2  ACEM      CL             -0.0001871932        2.7944002977        6.1415323807  BROB      2               0.0000000000
+        22         2  ACEM      DCL            -0.0001858827        2.7467597890        6.0983461446  BROB      2               0.0000000000
+        23         2  ACEM      C              -0.0001486734        2.9714659824        4.8751993675  BROB      2               0.0000000000
+        24         2  ACEM      DC             -0.0001488554        2.9946255103        4.8809860640  BROB      2               0.0000000000
+        25         2  ACEM      N              -0.0001285460        1.8283819156        4.2169308650  BROB      2               0.0000000000
+        26         2  ACEM      DN             -0.0001292870        1.8317632684        4.2394981005  BROB      2               0.0000000000
+        27         2  ACEM      HC             -0.0000975995        1.8283822721        3.1999637676  BROB      2               0.0000000000
+        28         2  ACEM      HT             -0.0001433398        0.9401945223        4.7055443558  BROB      2               0.0000000000
+        29         2  ACEM      O              -0.0001300639        4.0669983682        4.2606220640  BROB      2               0.0000000000
+        30         2  ACEM      DO             -0.0001298963        4.0277537288        4.2549725572  BROB      2               0.0000000000
+        31         2  ACEM      HL1            -0.0002026919        3.7837392432        6.6481183785  BROB      2               0.0000000000
+        32         2  ACEM      HL2            -0.9032410717        2.2249781296        6.4488702284  BROB      2               0.0000000000
+        33         2  ACEM      HL3             0.9028480748        2.2249782816        6.4489251879  BROB      2               0.0000000000
+        34         2  ACEM      LPA            -0.0001379592        4.2183194668        4.5196624567  BROB      2               0.0000000000
+        35         2  ACEM      LPB            -0.0001220134        3.9248098296        3.9964584416  BROB      2               0.0000000000
+
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+!-----------------------------------------------------------------------
+set residue1 brob
+set residue2 nma
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        39  EXT
+         1         1  BROB      C1             -1.2239938351       -0.7779223603        0.0000000059  BROB      1               0.0000000000
+         2         1  BROB      DC1            -1.2276142374       -0.7900417427        0.0003098227  BROB      1               0.0000000000
+         3         1  BROB      H1             -2.1545197303       -0.2330926307       -0.0000000069  BROB      1               0.0000000000
+         4         1  BROB      C2             -1.2249481739       -2.1921662233        0.0000000066  BROB      1               0.0000000000
+         5         1  BROB      DC2            -1.2275347719       -2.2101348257        0.0000582713  BROB      1               0.0000000000
+         6         1  BROB      H2             -2.1600629185       -2.7306258831       -0.0000000038  BROB      1               0.0000000000
+         7         1  BROB      C3             -0.0000002243       -2.8984861551        0.0000000045  BROB      1               0.0000000000
+         8         1  BROB      DC3            -0.0000003088       -2.8876400972        0.0000680302  BROB      1               0.0000000000
+         9         1  BROB      H3             -0.0000002890       -3.9778054397       -0.0000000024  BROB      1               0.0000000000
+        10         1  BROB      C4              1.2249478263       -2.1921663487        0.0000000066  BROB      1               0.0000000000
+        11         1  BROB      DC4             1.2275342940       -2.2101350298        0.0000582669  BROB      1               0.0000000000
+        12         1  BROB      H4              2.1600624897       -2.7306261480       -0.0000000038  BROB      1               0.0000000000
+        13         1  BROB      C5              1.2239936394       -0.7779224791        0.0000000059  BROB      1               0.0000000000
+        14         1  BROB      DC5             1.2276137809       -0.7900420058        0.0003097642  BROB      1               0.0000000000
+        15         1  BROB      H5              2.1545196067       -0.2330928690       -0.0000000069  BROB      1               0.0000000000
+        16         1  BROB      C6             -0.0000000806       -0.0706122915        0.0000000460  BROB      1               0.0000000000
+        17         1  BROB      DC6            -0.0000001985       -0.0933270427        0.0003569821  BROB      1               0.0000000000
+        18         1  BROB      BR6            -0.0000002303        1.8283823376       -0.0000000469  BROB      1               0.0000000000
+        19         1  BROB      DBR6           -0.0000005052        1.7601771452        0.0010362966  BROB      1               0.0000000000
+        20         1  BROB      LP6            -0.0000003761        3.6783823376       -0.0000001375  BROB      1               0.0000000000
+        21         2  NMA       CL             -0.0000007100        6.9160899220       -1.3788107854  BROB      2               0.0000000000
+        22         2  NMA       DCL            -0.0000009203        6.9261046495       -1.3360169429  BROB      2               0.0000000000
+        23         2  NMA       HL1            -0.0000006932        6.1327717902       -2.1678121326  BROB      2               0.0000000000
+        24         2  NMA       HL2            -0.9103998784        7.5414448238       -1.4814838443  BROB      2               0.0000000000
+        25         2  NMA       HL3             0.9103983481        7.5414449674       -1.4814839480  BROB      2               0.0000000000
+        26         2  NMA       C              -0.0000005816        6.2837120829       -0.0000002662  BROB      2               0.0000000000
+        27         2  NMA       DC             -0.0000045794        6.2727049892        0.0125879499  BROB      2               0.0000000000
+        28         2  NMA       O              -0.0000004827        5.0283822946       -0.0000001877  BROB      2               0.0000000000
+        29         2  NMA       DO             -0.0000021443        5.0407685280        0.0122651018  BROB      2               0.0000000000
+        30         2  NMA       N              -0.0000005632        7.0421843722        1.1231549300  BROB      2               0.0000000000
+        31         2  NMA       DN              0.0000005567        7.0428553658        1.1080791985  BROB      2               0.0000000000
+        32         2  NMA       H              -0.0000006644        8.0588514132        1.0052870105  BROB      2               0.0000000000
+        33         2  NMA       CC             -0.0000004870        6.4557187809        2.4687404202  BROB      2               0.0000000000
+        34         2  NMA       DCC            -0.0000001667        6.4803072246        2.5187726960  BROB      2               0.0000000000
+        35         2  NMA       HC1            -0.0000004599        7.1184919388        3.3658797480  BROB      2               0.0000000000
+        36         2  NMA       HC2            -0.8365986511        5.7901454135        2.7869275835  BROB      2               0.0000000000
+        37         2  NMA       HC3             0.8348362862        5.7900873371        2.7896065743  BROB      2               0.0000000000
+        38         2  NMA       LPA            -0.0000004994        5.0231465540       -0.2999544959  BROB      2               0.0000000000
+        39         2  NMA       LPB            -0.0000004652        5.0231465915        0.2999541212  BROB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+!-----------------------------------------------------------------------
+set residue1 brob
+set residue2 meoh
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        30  EXT
+         1         1  BROB      C1             -1.2239938405       -0.7779221535        0.0000000332  BROB      1               0.0000000000
+         2         1  BROB      DC1            -1.2195104596       -0.7793130423       -0.0002332884  BROB      1               0.0000000000
+         3         1  BROB      H1             -2.1545199966       -0.2330928677       -0.0000000309  BROB      1               0.0000000000
+         4         1  BROB      C2             -1.2249480782       -2.1921660582       -0.0000000066  BROB      1               0.0000000000
+         5         1  BROB      DC2            -1.2270850164       -2.2032941829       -0.0007058780  BROB      1               0.0000000000
+         6         1  BROB      H2             -2.1600630646       -2.7306260188        0.0000000515  BROB      1               0.0000000000
+         7         1  BROB      C3             -0.0000002243       -2.8984856857       -0.0000000596  BROB      1               0.0000000000
+         8         1  BROB      DC3            -0.0000002041       -2.8814199093       -0.0005476319  BROB      1               0.0000000000
+         9         1  BROB      H3             -0.0000002890       -3.9778056312        0.0000000425  BROB      1               0.0000000000
+        10         1  BROB      C4              1.2249477305       -2.1921661837       -0.0000000066  BROB      1               0.0000000000
+        11         1  BROB      DC4             1.2270847114       -2.2032943175       -0.0007058390  BROB      1               0.0000000000
+        12         1  BROB      H4              2.1600626358       -2.7306262837        0.0000000515  BROB      1               0.0000000000
+        13         1  BROB      C5              1.2239936448       -0.7779222723        0.0000000332  BROB      1               0.0000000000
+        14         1  BROB      DC5             1.2195102933       -0.7793132347       -0.0002333104  BROB      1               0.0000000000
+        15         1  BROB      H5              2.1545198730       -0.2330931060       -0.0000000309  BROB      1               0.0000000000
+        16         1  BROB      C6             -0.0000000875       -0.0706132390       -0.0000313358  BROB      1               0.0000000000
+        17         1  BROB      DC6            -0.0000001268       -0.0706277608        0.0020698289  BROB      1               0.0000000000
+        18         1  BROB      BR6            -0.0000002153        1.8283847676       -0.0000317373  BROB      1               0.0000000000
+        19         1  BROB      DBR6           -0.0000003627        1.8219548910        0.0057776427  BROB      1               0.0000000000
+        20         1  BROB      LP6            -0.0000003398        3.6783847676       -0.0000321284  BROB      1               0.0000000000
+        21         2  MEOH      C1             -0.0001178496        3.1909625796        4.6050993344  BROB      2               0.0000000000
+        22         2  MEOH      DC1            -0.0001178968        3.1921140204        4.6066587106  BROB      2               0.0000000000
+        23         2  MEOH      O1             -0.0001067121        1.8283856319        4.1723438366  BROB      2               0.0000000000
+        24         2  MEOH      DO1            -0.0001068449        1.8284209673        4.1756219687  BROB      2               0.0000000000
+        25         2  MEOH      HO1            -0.0000818929        1.8283854342        3.1999681592  BROB      2               0.0000000000
+        26         2  MEOH      H1A            -0.0001462299        3.2267726958        5.7169045684  BROB      2               0.0000000000
+        27         2  MEOH      H1B             0.9078972800        3.7111791670        4.2284742410  BROB      2               0.0000000000
+        28         2  MEOH      H1C            -0.9081138220        3.7111790446        4.2284278887  BROB      2               0.0000000000
+        29         2  MEOH      LP1A            0.3287364062        1.7125570907        4.1415874944  BROB      2               0.0000000000
+        30         2  MEOH      LP1B           -0.3289482443        1.7125570464        4.1415707074  BROB      2               0.0000000000
+
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+!-----------------------------------------------------------------------
+set residue1 brob
+set residue2 phen
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        42  EXT
+         1         1  BROB      C1             -1.2247403056       -0.7769346629        0.0000001038  BROB      1               0.0000000000
+         2         1  BROB      DC1            -1.2194962333       -0.7774020559        0.0004589877  BROB      1               0.0000000000
+         3         1  BROB      H1             -2.1665314340       -0.2226292729       -0.0000000557  BROB      1               0.0000000000
+         4         1  BROB      C2             -1.2169399934       -2.1843359443        0.0000000458  BROB      1               0.0000000000
+         5         1  BROB      DC2            -1.2191145038       -2.1949564019       -0.0005500355  BROB      1               0.0000000000
+         6         1  BROB      H2             -2.1674820582       -2.7260418588        0.0000000365  BROB      1               0.0000000000
+         7         1  BROB      C3             -0.0000000002       -2.8910260613       -0.0000000106  BROB      1               0.0000000000
+         8         1  BROB      DC3            -0.0000000003       -2.8730928192       -0.0003589123  BROB      1               0.0000000000
+         9         1  BROB      H3             -0.0000000000       -3.9844654665        0.0000000326  BROB      1               0.0000000000
+        10         1  BROB      C4              1.2169399933       -2.1843369433        0.0000000458  BROB      1               0.0000000000
+        11         1  BROB      DC4             1.2191145093       -2.1949574318       -0.0005500019  BROB      1               0.0000000000
+        12         1  BROB      H4              2.1674820582       -2.7260428587        0.0000000365  BROB      1               0.0000000000
+        13         1  BROB      C5              1.2247393064       -0.7769346636        0.0000001038  BROB      1               0.0000000000
+        14         1  BROB      DC5             1.2194952427       -0.7774021624        0.0004589106  BROB      1               0.0000000000
+        15         1  BROB      H5              2.1665304341       -0.2226292729       -0.0000000557  BROB      1               0.0000000000
+        16         1  BROB      C6             -0.0000001250       -0.0877062847       -0.0000345741  BROB      1               0.0000000000
+        17         1  BROB      DC6            -0.0000001957       -0.0858855528        0.0029207738  BROB      1               0.0000000000
+        18         1  BROB      BR6             0.0000002492        1.8082670736       -0.0000360161  BROB      1               0.0000000000
+        19         1  BROB      DBR6            0.0000000449        1.8058276658        0.0074819754  BROB      1               0.0000000000
+        20         1  BROB      LP6             0.0000006144        3.6582670736       -0.0000374231  BROB      1               0.0000000000
+        21         2  PHEN      CG             -0.0001476110        5.8713609561        5.3260058600  BROB      2               0.0000000000
+        22         2  PHEN      DCG            -0.0001467754        5.8400812724        5.2957764394  BROB      2               0.0000000000
+        23         2  PHEN      HG             -0.0001557084        6.9103429957        5.6234469167  BROB      2               0.0000000000
+        24         2  PHEN      CD1            -0.0001753051        4.8584368138        6.3110447961  BROB      2               0.0000000000
+        25         2  PHEN      DCD1           -0.0001753854        4.8861633033        6.3140281483  BROB      2               0.0000000000
+        26         2  PHEN      HD1            -0.0002044838        5.1222934607        7.3582876682  BROB      2               0.0000000000
+        27         2  PHEN      CD2            -0.0001094146        5.5290357981        3.9551338165  BROB      2               0.0000000000
+        28         2  PHEN      DCD2           -0.0001089500        5.5225393603        3.9383581005  BROB      2               0.0000000000
+        29         2  PHEN      HD2            -0.0000884008        6.3086031617        3.2077802014  BROB      2               0.0000000000
+        30         2  PHEN      CE1            -0.0001647117        3.4974203751        5.9219067333  BROB      2               0.0000000000
+        31         2  PHEN      DCE1           -0.0001647118        3.4954919492        5.9216620620  BROB      2               0.0000000000
+        32         2  PHEN      HE1            -0.0001854373        2.7112917044        6.6588889433  BROB      2               0.0000000000
+        33         2  PHEN      CE2            -0.0000988966        4.1673420525        3.5686893487  BROB      2               0.0000000000
+        34         2  PHEN      DCE2           -0.0000987140        4.1105233453        3.5612807008  BROB      2               0.0000000000
+        35         2  PHEN      HE2            -0.0000697998        3.9040709342        2.5243849250  BROB      2               0.0000000000
+        36         2  PHEN      CZ             -0.0001265682        3.1565246154        4.5529162352  BROB      2               0.0000000000
+        37         2  PHEN      DCZ            -0.0001272090        3.1610177068        4.5755734748  BROB      2               0.0000000000
+        38         2  PHEN      OH             -0.0001157900        1.8082701504        4.1576878667  BROB      2               0.0000000000
+        39         2  PHEN      DOH            -0.0001159201        1.8040539998        4.1604325004  BROB      2               0.0000000000
+        40         2  PHEN      HH             -0.0000890573        1.8082694194        3.1999638775  BROB      2               0.0000000000
+        41         2  PHEN      LP1A            0.3268067812        1.6868484667        4.1280499325  BROB      2               0.0000000000
+        42         2  PHEN      LP1B           -0.3270367518        1.6868485897        4.1280316820  BROB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+!-----------------------------------------------------------------------
+set residue1 brob
+set residue2 acet
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        35  EXT
+         1         1  BROB      C1             -1.2239641438       -0.7778987225       -0.0000208369  BROB      1               0.0000000000
+         2         1  BROB      DC1            -1.2375677288       -0.8089957883        0.0005698459  BROB      1               0.0000000000
+         3         1  BROB      H1             -2.1545182139       -0.2330862056       -0.0000001899  BROB      1               0.0000000000
+         4         1  BROB      C2             -1.2249347934       -2.1921560322       -0.0000151756  BROB      1               0.0000000000
+         5         1  BROB      DC2            -1.2285974545       -2.2234320961        0.0001068630  BROB      1               0.0000000000
+         6         1  BROB      H2             -2.1600622705       -2.7306195040       -0.0000000563  BROB      1               0.0000000000
+         7         1  BROB      C3             -0.0000002211       -2.8984776220       -0.0000154015  BROB      1               0.0000000000
+         8         1  BROB      DC3             0.0000011156       -2.9000036972        0.0001083307  BROB      1               0.0000000000
+         9         1  BROB      H3             -0.0000003276       -3.9777989548       -0.0000000965  BROB      1               0.0000000000
+        10         1  BROB      C4              1.2249344542       -2.1921562012       -0.0000151754  BROB      1               0.0000000000
+        11         1  BROB      DC4             1.2285959432       -2.2234253626        0.0001070455  BROB      1               0.0000000000
+        12         1  BROB      H4              2.1600618257       -2.7306198795       -0.0000000564  BROB      1               0.0000000000
+        13         1  BROB      C5              1.2239637071       -0.7778987968       -0.0000208382  BROB      1               0.0000000000
+        14         1  BROB      DC5             1.2375487765       -0.8089967561        0.0005717227  BROB      1               0.0000000000
+        15         1  BROB      H5              2.1545181708       -0.2330865191       -0.0000001902  BROB      1               0.0000000000
+        16         1  BROB      C6             -0.0003622797       -0.0705985452       -0.0043081825  BROB      1               0.0000000000
+        17         1  BROB      DC6            -0.0003846467       -0.1254777198       -0.0037405263  BROB      1               0.0000000000
+        18         1  BROB      BR6             0.0002352910        1.8193591800       -0.0009486789  BROB      1               0.0000000000
+        19         1  BROB      DBR6            0.0001838869        1.6658811264        0.0002602028  BROB      1               0.0000000000
+        20         1  BROB      LP6             0.0008202268        3.6693561648        0.0023397924  BROB      1               0.0000000000
+        21         2  ACET      C1             -0.0046691641        6.8775228763        1.4445948402  BROB      2               0.0000000000
+        22         2  ACET      DC1            -0.0046386555        6.8747763235        1.4375527340  BROB      2               0.0000000000
+        23         2  ACET      H1             -0.0042486251        7.9879146949        1.4312295208  BROB      2               0.0000000000
+        24         2  ACET      H2             -0.9136634735        6.5282791228        1.9794084729  BROB      2               0.0000000000
+        25         2  ACET      H3              0.8992187390        6.5276913206        1.9876160343  BROB      2               0.0000000000
+        26         2  ACET      C2              0.0016491567        6.2909697079        0.0069999839  BROB      2               0.0000000000
+        27         2  ACET      DC2             0.0016432344        6.2719845517        0.0069704750  BROB      2               0.0000000000
+        28         2  ACET      O1              0.0012470846        5.0193536933        0.0047394663  BROB      2               0.0000000000
+        29         2  ACET      DO1             0.0012416463        4.9989552613        0.0045237019  BROB      2               0.0000000000
+        30         2  ACET      O2              0.0063957576        7.0860006411       -0.9844890699  BROB      2               0.0000000000
+        31         2  ACET      DO2             0.0063614918        7.0848744073       -0.9769434170  BROB      2               0.0000000000
+        32         2  ACET      LP1A           -0.0002799503        4.8990626529        0.3334151936  BROB      2               0.0000000000
+        33         2  ACET      LP1B            0.0026984194        4.9002310237       -0.3243618604  BROB      2               0.0000000000
+        34         2  ACET      LP2A            0.0059945666        7.4174766864       -0.8721348512  BROB      2               0.0000000000
+        35         2  ACET      LP2B            0.0076911315        6.9042955819       -1.2836238112  BROB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+!!
+!-----------------------------------------------------------------------
+set residue1 brob
+set residue2 nc1
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        30  EXT
+         1         1  BROB      C1             -1.2239936330       -0.7779215178        0.0000008637  BROB      1               0.0000000000
+         2         1  BROB      DC1            -1.2140007026       -0.7654611482        0.0162709280  BROB      1               0.0000000000
+         3         1  BROB      H1             -2.1545204349       -0.2330933162       -0.0000006745  BROB      1               0.0000000000
+         4         1  BROB      C2             -1.2249478877       -2.1921652588        0.0000005302  BROB      1               0.0000000000
+         5         1  BROB      DC2            -1.2254485058       -2.1914517194        0.0031805843  BROB      1               0.0000000000
+         6         1  BROB      H2             -2.1600634759       -2.7306266377       -0.0000003366  BROB      1               0.0000000000
+         7         1  BROB      C3             -0.0000002234       -2.8984848308        0.0000002907  BROB      1               0.0000000000
+         8         1  BROB      DC3             0.0000128521       -2.8707974735        0.0036820613  BROB      1               0.0000000000
+         9         1  BROB      H3             -0.0000002894       -3.9778064209       -0.0000001990  BROB      1               0.0000000000
+        10         1  BROB      C4              1.2249475413       -2.1921653833        0.0000005316  BROB      1               0.0000000000
+        11         1  BROB      DC4             1.2254683719       -2.1914439286        0.0031888498  BROB      1               0.0000000000
+        12         1  BROB      H4              2.1600630463       -2.7306269030       -0.0000003375  BROB      1               0.0000000000
+        13         1  BROB      C5              1.2239934386       -0.7779216363        0.0000008675  BROB      1               0.0000000000
+        14         1  BROB      DC5             1.2140264524       -0.7654568171        0.0162873639  BROB      1               0.0000000000
+        15         1  BROB      H5              2.1545203108       -0.2330935541       -0.0000006752  BROB      1               0.0000000000
+        16         1  BROB      C6             -0.0000000833       -0.0706136868       -0.0000317048  BROB      1               0.0000000000
+        17         1  BROB      DC6             0.0000120463       -0.0570559031        0.0210423502  BROB      1               0.0000000000
+        18         1  BROB      BR6            -0.0000002318        1.8283850288       -0.0000318580  BROB      1               0.0000000000
+        19         1  BROB      DBR6            0.0000126712        1.8322051079        0.0239828014  BROB      1               0.0000000000
+        20         1  BROB      LP6            -0.0000003766        3.6783850288       -0.0000320069  BROB      1               0.0000000000
+        21         2  NC1       N              -0.0001126413        1.8283853747        4.2291408748  BROB      2               0.0000000000
+        22         2  NC1       DN             -0.0000986366        1.8293189531        4.2356441636  BROB      2               0.0000000000
+        23         2  NC1       C1              0.0504155240        3.2581915609        4.7831697569  BROB      2               0.0000000000
+        24         2  NC1       DC1             0.0505038477        3.2605487208        4.7865930349  BROB      2               0.0000000000
+        25         2  NC1       HN2            -0.0000852863        1.8283852739        3.1999679501  BROB      2               0.0000000000
+        26         2  NC1       HN3            -0.8491148132        1.3382184845        4.5423951702  BROB      2               0.0000000000
+        27         2  NC1       HN4             0.8121427339        1.2794939148        4.5424393162  BROB      2               0.0000000000
+        28         2  NC1       H11             0.0501961717        3.2529631421        5.8689031036  BROB      2               0.0000000000
+        29         2  NC1       H12            -0.8082601369        3.8331021459        4.4500057803  BROB      2               0.0000000000
+        30         2  NC1       H13             0.9475659557        3.7710310762        4.4500616050  BROB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+!-----------------------------------------------------------------------
+set residue1 brob
+set residue2 mguan
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        38  EXT
+         1         1  BROB      C1             -1.2239936645       -0.7779217068        0.0000005215  BROB      1               0.0000000000
+         2         1  BROB      DC1            -1.2142945890       -0.7677040890        0.0114587827  BROB      1               0.0000000000
+         3         1  BROB      H1             -2.1545203667       -0.2330932280       -0.0000004379  BROB      1               0.0000000000
+         4         1  BROB      C2             -1.2249479111       -2.1921654494        0.0000004085  BROB      1               0.0000000000
+         5         1  BROB      DC2            -1.2258307618       -2.1936298403        0.0025260227  BROB      1               0.0000000000
+         6         1  BROB      H2             -2.1600633979       -2.7306265061       -0.0000002592  BROB      1               0.0000000000
+         7         1  BROB      C3             -0.0000002243       -2.8984849596        0.0000002351  BROB      1               0.0000000000
+         8         1  BROB      DC3            -0.0000006063       -2.8725670420        0.0029356404  BROB      1               0.0000000000
+         9         1  BROB      H3             -0.0000002890       -3.9778062614       -0.0000001728  BROB      1               0.0000000000
+        10         1  BROB      C4              1.2249475635       -2.1921655748        0.0000004084  BROB      1               0.0000000000
+        11         1  BROB      DC4             1.2258298580       -2.1936303090        0.0025259080  BROB      1               0.0000000000
+        12         1  BROB      H4              2.1600629691       -2.7306267710       -0.0000002592  BROB      1               0.0000000000
+        13         1  BROB      C5              1.2239934688       -0.7779218257        0.0000005214  BROB      1               0.0000000000
+        14         1  BROB      DC5             1.2142934864       -0.7677047010        0.0114579996  BROB      1               0.0000000000
+        15         1  BROB      H5              2.1545202431       -0.2330934663       -0.0000004378  BROB      1               0.0000000000
+        16         1  BROB      C6             -0.0000000805       -0.0706137001       -0.0000397772  BROB      1               0.0000000000
+        17         1  BROB      DC6            -0.0000006271       -0.0569559702        0.0150622482  BROB      1               0.0000000000
+        18         1  BROB      BR6            -0.0000002292        1.8283852496       -0.0000400021  BROB      1               0.0000000000
+        19         1  BROB      DBR6           -0.0000008586        1.8423547254        0.0197982045  BROB      1               0.0000000000
+        20         1  BROB      LP6            -0.0000003740        3.6783852496       -0.0000402211  BROB      1               0.0000000000
+        21         2  MGUAN     C              -0.0001617965        2.9780976182        4.9118856898  BROB      2               0.0000000000
+        22         2  MGUAN     DC             -0.0001623289        2.9886272640        4.9278229026  BROB      2               0.0000000000
+        23         2  MGUAN     N1             -0.0001383012        1.8283857338        4.1999261168  BROB      2               0.0000000000
+        24         2  MGUAN     DN1            -0.0001395960        1.8864416319        4.2380991149  BROB      2               0.0000000000
+        25         2  MGUAN     H11            -0.0001054277        1.8283856046        3.1999598119  BROB      2               0.0000000000
+        26         2  MGUAN     H12            -0.0001526167        0.9294987289        4.6375228001  BROB      2               0.0000000000
+        27         2  MGUAN     N2             -0.0001401502        4.1560335927        4.2506296596  BROB      2               0.0000000000
+        28         2  MGUAN     DN2            -0.0001409895        4.1035450619        4.2760737936  BROB      2               0.0000000000
+        29         2  MGUAN     H21            -0.0001073068        4.1957589971        3.2514825942  BROB      2               0.0000000000
+        30         2  MGUAN     H22            -0.0001557793        5.0350434631        4.7239543864  BROB      2               0.0000000000
+        31         2  MGUAN     N3             -0.0002065130        2.9264440259        6.2722231752  BROB      2               0.0000000000
+        32         2  MGUAN     DN3            -0.0002042165        2.9327149285        6.2021809332  BROB      2               0.0000000000
+        33         2  MGUAN     H31            -0.0002210618        2.0281466976        6.7169173706  BROB      2               0.0000000000
+        34         2  MGUAN     C2             -0.0002342352        4.1682723130        7.1125397041  BROB      2               0.0000000000
+        35         2  MGUAN     DC2            -0.0002356327        4.1857051376        7.1548716185  BROB      2               0.0000000000
+        36         2  MGUAN     HC1            -0.0002696100        3.8818196534        8.1892746492  BROB      2               0.0000000000
+        37         2  MGUAN     HC2             0.9123860474        4.7721830773        6.9041180970  BROB      2               0.0000000000
+        38         2  MGUAN     HC3            -0.9128409068        4.7721829345        6.9040580934  BROB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+!-----------------------------------------------------------------------
+set residue1 brob
+set residue2 imid
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        35  EXT
+         1         1  BROB      C1             -1.2239938181       -0.7779220702        0.0000001501  BROB      1               0.0000000000
+         2         1  BROB      DC1            -1.2195154386       -0.7779708863        0.0019787925  BROB      1               0.0000000000
+         3         1  BROB      H1             -2.1545200072       -0.2330929125       -0.0000001419  BROB      1               0.0000000000
+         4         1  BROB      C2             -1.2249480551       -2.1921659443        0.0000000814  BROB      1               0.0000000000
+         5         1  BROB      DC2            -1.2270370257       -2.2020051377       -0.0004018559  BROB      1               0.0000000000
+         6         1  BROB      H2             -2.1600630903       -2.7306260917        0.0000000203  BROB      1               0.0000000000
+         7         1  BROB      C3             -0.0000002329       -2.8984855800       -0.0000000149  BROB      1               0.0000000000
+         8         1  BROB      DC3            -0.0001161897       -2.8803379167       -0.0002881743  BROB      1               0.0000000000
+         9         1  BROB      H3             -0.0000002827       -3.9778057167        0.0000000432  BROB      1               0.0000000000
+        10         1  BROB      C4              1.2249476924       -2.1921660654        0.0000000806  BROB      1               0.0000000000
+        11         1  BROB      DC4             1.2267688964       -2.2019482344       -0.0004784483  BROB      1               0.0000000000
+        12         1  BROB      H4              2.1600626793       -2.7306263586        0.0000000271  BROB      1               0.0000000000
+        13         1  BROB      C5              1.2239936171       -0.7779221722        0.0000001616  BROB      1               0.0000000000
+        14         1  BROB      DC5             1.2193003361       -0.7778405035        0.0021792681  BROB      1               0.0000000000
+        15         1  BROB      H5              2.1545199073       -0.2330931644       -0.0000001594  BROB      1               0.0000000000
+        16         1  BROB      C6             -0.0000000754       -0.0706134282       -0.0000313993  BROB      1               0.0000000000
+        17         1  BROB      DC6             0.0000197482       -0.0704347821        0.0046000940  BROB      1               0.0000000000
+        18         1  BROB      BR6            -0.0000001623        1.8283849407       -0.0000313799  BROB      1               0.0000000000
+        19         1  BROB      DBR6            0.0000934220        1.8191538006        0.0072002426  BROB      1               0.0000000000
+        20         1  BROB      LP6            -0.0000002469        3.6783849407       -0.0000313611  BROB      1               0.0000000000
+        21         2  IMID      CG             -1.1056521593        1.8283867213        5.0258763045  BROB      2               0.0000000000
+        22         2  IMID      DCG            -1.1063280803        1.8282165658        5.0266827390  BROB      2               0.0000000000
+        23         2  IMID      HG             -2.1312938432        1.8283871666        4.6830348252  BROB      2               0.0000000000
+        24         2  IMID      CD2            -0.6233355140        1.8283880118        6.2970142321  BROB      2               0.0000000000
+        25         2  IMID      DCD2           -0.6150927127        1.8282541472        6.2808632716  BROB      2               0.0000000000
+        26         2  IMID      HD2            -1.1535439238        1.8283900005        7.2421305280  BROB      2               0.0000000000
+        27         2  IMID      ND1            -0.0001086068        1.8283848895        4.2019269266  BROB      2               0.0000000000
+        28         2  IMID      DND1           -0.0018403660        1.8283822176        4.2066835679  BROB      2               0.0000000000
+        29         2  IMID      HD1            -0.0000827475        1.8283849029        3.1999685302  BROB      2               0.0000000000
+        30         2  IMID      CE1             1.0880054364        1.8283849338        5.0120543291  BROB      2               0.0000000000
+        31         2  IMID      DCE1            1.0767474774        1.8282198102        5.0145084583  BROB      2               0.0000000000
+        32         2  IMID      HE1             2.1102512160        1.8283834494        4.6367949460  BROB      2               0.0000000000
+        33         2  IMID      NE2             0.7585247011        1.8283868233        6.2881290828  BROB      2               0.0000000000
+        34         2  IMID      DNE2            0.7509321244        1.8283204665        6.2772813352  BROB      2               0.0000000000
+        35         2  IMID      LP1             0.9821829903        1.8283869615        6.5573445535  BROB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+!-----------------------------------------------------------------------
+
+set residue1 brob
+set residue2 indo
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        45  EXT
+         1         1  BROB      C1             -1.2239940283       -0.7779228419        0.0000000137  BROB      1               0.0000000000
+         2         1  BROB      DC1            -1.2189321883       -0.7787998355        0.0023525623  BROB      1               0.0000000000
+         3         1  BROB      H1             -2.1545205846       -0.2330941791       -0.0000004051  BROB      1               0.0000000000
+         4         1  BROB      C2             -1.2249476254       -2.1921667234        0.0000003529  BROB      1               0.0000000000
+         5         1  BROB      DC2            -1.2268604388       -2.2025552079       -0.0001398216  BROB      1               0.0000000000
+         6         1  BROB      H2             -2.1600626192       -2.7306273687       -0.0000000173  BROB      1               0.0000000000
+         7         1  BROB      C3              0.0000004302       -2.8984856742        0.0000000804  BROB      1               0.0000000000
+         8         1  BROB      DC3             0.0000002051       -2.8807791369        0.0001203990  BROB      1               0.0000000000
+         9         1  BROB      H3              0.0000008180       -3.9778061685        0.0000000158  BROB      1               0.0000000000
+        10         1  BROB      C4              1.2249479921       -2.1921658491        0.0000003529  BROB      1               0.0000000000
+        11         1  BROB      DC4             1.2268606049       -2.2025546821       -0.0001398137  BROB      1               0.0000000000
+        12         1  BROB      H4              2.1600633666       -2.7306258299       -0.0000000173  BROB      1               0.0000000000
+        13         1  BROB      C5              1.2239933953       -0.7779219711        0.0000000138  BROB      1               0.0000000000
+        14         1  BROB      DC5             1.2189310928       -0.7787996256        0.0023515730  BROB      1               0.0000000000
+        15         1  BROB      H5              2.1545195561       -0.2330926370       -0.0000004051  BROB      1               0.0000000000
+        16         1  BROB      C6             -0.0000005708       -0.0706137757       -0.0001396710  BROB      1               0.0000000000
+        17         1  BROB      DC6            -0.0000011630       -0.0711767998        0.0052408881  BROB      1               0.0000000000
+        18         1  BROB      BR6            -0.0000013218        1.8283833386       -0.0001391954  BROB      1               0.0000000000
+        19         1  BROB      DBR6           -0.0000021611        1.8167706949        0.0074077230  BROB      1               0.0000000000
+        20         1  BROB      LP6            -0.0000020534        3.6783833386       -0.0001387320  BROB      1               0.0000000000
+        21         2  INDO      CD2            -0.0007248533        2.5924018328        6.3281081231  BROB      2               0.0000000000
+        22         2  INDO      DCD2           -0.0007240333        2.5946725453        6.3208613280  BROB      2               0.0000000000
+        23         2  INDO      CE2            -0.0005709592        2.9929217576        4.9801227728  BROB      2               0.0000000000
+        24         2  INDO      DCE2           -0.0005717814        2.9795947307        4.9871798338  BROB      2               0.0000000000
+        25         2  INDO      CZ2            -0.0005327056        4.3537180425        4.6406457480  BROB      2               0.0000000000
+        26         2  INDO      DCZ2           -0.0005317908        4.3186833613        4.6324870994  BROB      2               0.0000000000
+        27         2  INDO      CH2            -0.0006494330        5.3235686052        5.6586312654  BROB      2               0.0000000000
+        28         2  INDO      DCH2           -0.0006470542        5.3357408447        5.6377079575  BROB      2               0.0000000000
+        29         2  INDO      CZ3            -0.0008044209        4.9217477763        7.0161924728  BROB      2               0.0000000000
+        30         2  INDO      DCZ3           -0.0008023770        4.9233586344        6.9982371357  BROB      2               0.0000000000
+        31         2  INDO      CE3            -0.0008415218        3.5540737403        7.3456069632  BROB      2               0.0000000000
+        32         2  INDO      DCE3           -0.0008418094        3.5561407734        7.3479834712  BROB      2               0.0000000000
+        33         2  INDO      CG             -0.0007270563        1.1722417278        6.3523472687  BROB      2               0.0000000000
+        34         2  INDO      DCG            -0.0007258600        1.1776596261        6.3416814311  BROB      2               0.0000000000
+        35         2  INDO      CD1            -0.0005754309        0.7255821710        5.0271735136  BROB      2               0.0000000000
+        36         2  INDO      DCD1           -0.0005760450        0.7091303568        5.0313578588  BROB      2               0.0000000000
+        37         2  INDO      NE1            -0.0004809471        1.8283822434        4.1965792004  BROB      2               0.0000000000
+        38         2  INDO      DNE1           -0.0004817003        1.8185768581        4.2019392187  BROB      2               0.0000000000
+        39         2  INDO      HZ2            -0.0004152688        4.6692597270        3.6119616162  BROB      2               0.0000000000
+        40         2  INDO      HH2            -0.0006210908        6.3727456422        5.4069686597  BROB      2               0.0000000000
+        41         2  INDO      HZ3            -0.0008942004        5.6639724709        7.7991765551  BROB      2               0.0000000000
+        42         2  INDO      HE3            -0.0009597714        3.2606106309        8.3813259901  BROB      2               0.0000000000
+        43         2  INDO      HG             -0.0008262514        0.5275580380        7.2225648768  BROB      2               0.0000000000
+        44         2  INDO      HD1            -0.0005379758       -0.3027845850        4.7030311568  BROB      2               0.0000000000
+        45         2  INDO      HE1            -0.0003670375        1.8283825360        3.1998606732  BROB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+!-----------------------------------------------------------------------
+
+set residue1 brob
+set residue2 mesh
+
+read sequence card
+* @residue1
+*
+1
+@residue1
+generate  @residue1 first none last none setup warn drude dmass 0.4
+
+read sequence card
+* @residue2
+*
+1
+@residue2
+generate @residue2 first none last none setup warn drude dmass 0.4
+
+
+read coor card
+* @residue1 @residue2
+*
+        30  EXT
+         1         1  BROB      C1             -1.2239938493       -0.7779221979        0.0000000483  BROB      1               0.0000000000
+         2         1  BROB      DC1            -1.2202507201       -0.7806339027       -0.0000813890  BROB      1               0.0000000000
+         3         1  BROB      H1             -2.1545199564       -0.2330928115       -0.0000000483  BROB      1               0.0000000000
+         4         1  BROB      C2             -1.2249480772       -2.1921660630        0.0000000364  BROB      1               0.0000000000
+         5         1  BROB      DC2            -1.2271236256       -2.2040367953       -0.0004229857  BROB      1               0.0000000000
+         6         1  BROB      H2             -2.1600630432       -2.7306259975        0.0000000302  BROB      1               0.0000000000
+         7         1  BROB      C3             -0.0000002243       -2.8984857620       -0.0000000221  BROB      1               0.0000000000
+         8         1  BROB      DC3            -0.0000002126       -2.8820618868       -0.0003235405  BROB      1               0.0000000000
+         9         1  BROB      H3             -0.0000002890       -3.9778056019        0.0000000285  BROB      1               0.0000000000
+        10         1  BROB      C4              1.2249477296       -2.1921661885        0.0000000364  BROB      1               0.0000000000
+        11         1  BROB      DC4             1.2271233030       -2.2040369269       -0.0004229667  BROB      1               0.0000000000
+        12         1  BROB      H4              2.1600626144       -2.7306262624        0.0000000302  BROB      1               0.0000000000
+        13         1  BROB      C5              1.2239936536       -0.7779223167        0.0000000483  BROB      1               0.0000000000
+        14         1  BROB      DC5             1.2202505422       -0.7806340580       -0.0000814111  BROB      1               0.0000000000
+        15         1  BROB      H5              2.1545198328       -0.2330930498       -0.0000000483  BROB      1               0.0000000000
+        16         1  BROB      C6             -0.0000000732       -0.0706131046       -0.0000281854  BROB      1               0.0000000000
+        17         1  BROB      DC6            -0.0000001003       -0.0732110355        0.0012013556  BROB      1               0.0000000000
+        18         1  BROB      BR6            -0.0000002446        1.8283848525       -0.0000283422  BROB      1               0.0000000000
+        19         1  BROB      DBR6           -0.0000003035        1.8194328333        0.0030771445  BROB      1               0.0000000000
+        20         1  BROB      LP6            -0.0000004116        3.6783848525       -0.0000284950  BROB      1               0.0000000000
+        21         2  MESH      H11            -0.0001351033        3.8738872252        5.8478836452  BROB      2               0.0000000000
+        22         2  MESH      H12             0.9063448741        4.0626512744        4.2910015501  BROB      2               0.0000000000
+        23         2  MESH      H13            -0.9065434304        4.0626511242        4.2909598163  BROB      2               0.0000000000
+        24         2  MESH      C1             -0.0001101382        3.6284376852        4.7642924319  BROB      2               0.0000000000
+        25         2  MESH      DC1            -0.0001101735        3.6293849080        4.7656631463  BROB      2               0.0000000000
+        26         2  MESH      S1             -0.0001050612        1.8283851928        4.5504584198  BROB      2               0.0000000000
+        27         2  MESH      DS1            -0.0001051919        1.8284201063        4.5533212056  BROB      2               0.0000000000
+        28         2  MESH      HS1            -0.0000739566        1.8283850918        3.1999716179  BROB      2               0.0000000000
+        29         2  MESH      LP1A            0.7847401798        1.7428224911        4.6796751822  BROB      2               0.0000000000
+        30         2  MESH      LP1B           -0.7849562393        1.7428223587        4.6796390288  BROB      2               0.0000000000
+
+energy ihbfrq 0 switch atom vatom vswitch cutnb 999.0 ctofnb 997.0 ctonnb 995.0
+echo @residue1 @residue2 starting E: ?ener
+
+dele atom sele all end
+
+return

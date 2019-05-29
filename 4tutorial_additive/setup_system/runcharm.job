@@ -1,0 +1,20 @@
+#$ -S /bin/sh
+#$ -cwd
+#$ -V
+#$ -j y
+#$ -N tutorial
+#$ -l h_data=400M,h_rt=999:00:00
+#$ -pe mpirun1 8
+#$ -R y
+
+charmm=/opt/mackerell/apps/charmm/parallel/charmm-parallel
+
+mpirun="mpirun --leave-session-attached"
+ulimit -c 16
+
+#    $mpirun $charmm -i  step3.0_patch.inp >  step3.0_patch.out
+#    $mpirun $charmm -i  step4.1_waterbox.inp >  step4.1_waterbox.out 
+#    $mpirun $charmm -i  step4.2_ions.inp >  step4.2_ions.out 
+    $mpirun $charmm -i  step4_solvator.inp >  step4_solvator.out 
+    $mpirun $charmm -i  step5_pbcsetup.inp >  step5_pbcsetup.out
+

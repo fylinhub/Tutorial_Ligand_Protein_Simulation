@@ -1,0 +1,14 @@
+#$ -S /bin/sh
+#$ -cwd
+#$ -V
+#$ -j y
+#$ -N tutorial
+#$ -l h_data=400M,h_rt=999:00:00
+#$ -pe smp 32
+#$ -R y
+
+ulimit -c 4
+namdir=/home/fylin/NAMD_Git-2019-04-26_Linux-x86_64-multicore/
+
+   $namdir/charmrun $namdir/namd2  +p$NSLOTS  equil.in > equil.log
+   $namdir/charmrun $namdir/namd2  +p$NSLOTS  prod.in >  prod.log

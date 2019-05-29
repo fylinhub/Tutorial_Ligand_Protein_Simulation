@@ -1,0 +1,239 @@
+Running command: /home/fylin/NAMD_Git-2019-04-26_Linux-x86_64-multicore//namd2 +p32 prod.in
+
+Charm++: standalone mode (not using charmrun)
+Charm++> Running in Multicore mode:  32 threads
+Charm++> Using recursive bisection (scheme 3) for topology aware partitions
+Converse/Charm++ Commit ID: v6.8.2-0-g26d4bd8-namd-charm-6.8.2-build-2018-Jan-11-30463
+CharmLB> Load balancer assumes all CPUs are same.
+Charm++> Running on 1 unique compute nodes (64-way SMP).
+Charm++> cpu topology info is gathered in 0.027 seconds.
+Info: NAMD Git-2019-04-26 for Linux-x86_64-multicore
+Info: 
+Info: Please visit http://www.ks.uiuc.edu/Research/namd/
+Info: for updates, documentation, and support information.
+Info: 
+Info: Please cite Phillips et al., J. Comp. Chem. 26:1781-1802 (2005)
+Info: in all publications reporting results obtained with NAMD.
+Info: 
+Info: Based on Charm++/Converse 60800 for multicore-linux64-iccstatic
+Info: Built Fri Apr 26 01:57:49 CDT 2019 by jim on belfast.ks.uiuc.edu
+Info: 1 NAMD  Git-2019-04-26  Linux-x86_64-multicore  32    n106  fylin
+Info: Running on 32 processors, 1 nodes, 1 physical nodes.
+Info: CPU topology information available.
+Info: Charm++/Converse parallel runtime startup completed at 0.128714 s
+CkLoopLib is used in SMP with a simple dynamic scheduling (converse-level notification) but not using node-level queue
+Info: 2094.73 MB of memory in use based on /proc/self/stat
+Info: Configuration file is prod.in
+Info: Working in the current directory /home/fylin/halogen/drude/protein_simulation/chlb_series/4tutorial_charmm/run_namd
+TCL: Suspending until startup complete.
+Info: EXTENDED SYSTEM FILE   ./results/2zc9.prod.0.restart.xsc
+Info: SIMULATION PARAMETERS:
+Info: TIMESTEP               2
+Info: NUMBER OF STEPS        20000
+Info: STEPS PER CYCLE        20
+Info: PERIODIC CELL BASIS 1  72.6638 0 0
+Info: PERIODIC CELL BASIS 2  0 72.6638 0
+Info: PERIODIC CELL BASIS 3  0 0 73.6327
+Info: PERIODIC CELL CENTER   0 0 0
+Info: WRAPPING WATERS AROUND PERIODIC BOUNDARIES ON OUTPUT.
+Info: WRAPPING ALL CLUSTERS AROUND PERIODIC BOUNDARIES ON OUTPUT.
+Info: LOAD BALANCER  Centralized
+Info: LOAD BALANCING STRATEGY  New Load Balancers -- DEFAULT
+Info: LDB PERIOD             4000 steps
+Info: FIRST LDB TIMESTEP     100
+Info: LAST LDB TIMESTEP     -1
+Info: LDB BACKGROUND SCALING 1
+Info: HOM BACKGROUND SCALING 1
+Info: PME BACKGROUND SCALING 1
+Info: MIN ATOMS PER PATCH    40
+Info: VELOCITY FILE          ./results/2zc9.prod.0.restart.vel
+Info: CENTER OF MASS MOVING INITIALLY? NO
+Info: DIELECTRIC             1
+Info: EXCLUDE                SCALED ONE-FOUR
+Info: 1-4 ELECTROSTATICS SCALED BY 1
+Info: MODIFIED 1-4 VDW PARAMETERS WILL BE USED
+Info: DCD FILENAME           ./results/2zc9.prod.1.dcd
+Info: DCD FREQUENCY          200
+Info: DCD FIRST STEP         20200
+Info: DCD FILE WILL CONTAIN UNIT CELL DATA
+Info: NO EXTENDED SYSTEM TRAJECTORY OUTPUT
+Info: NO VELOCITY DCD OUTPUT
+Info: NO FORCE DCD OUTPUT
+Info: OUTPUT FILENAME        ./results/2zc9.prod.1
+Info: BINARY OUTPUT FILES WILL BE USED
+Info: RESTART FILENAME       ./results/2zc9.prod.1.restart
+Info: RESTART FREQUENCY      200
+Info: BINARY RESTART FILES WILL BE USED
+Info: SWITCHING ACTIVE
+Info: SWITCHING ON           10
+Info: SWITCHING OFF          12
+Info: PAIRLIST DISTANCE      16
+Info: PAIRLIST SHRINK RATE   0.01
+Info: PAIRLIST GROW RATE     0.01
+Info: PAIRLIST TRIGGER       0.3
+Info: PAIRLISTS PER CYCLE    2
+Info: PAIRLISTS ENABLED
+Info: MARGIN                 10
+Warning: MARGIN IS UNUSUALLY LARGE AND WILL LOWER PERFORMANCE
+Warning: MARGIN INCREASED PATCH VOLUME BY A FACTOR OF 3.65611
+Info: HYDROGEN GROUP CUTOFF  2.5
+Info: PATCH DIMENSION        28.5
+Info: ENERGY OUTPUT STEPS    200
+Info: CROSSTERM ENERGY INCLUDED IN DIHEDRAL
+Info: TIMING OUTPUT STEPS    2000
+Info: HARMONIC CONSTRAINTS ACTIVE
+Info: HARMONIC CONS EXP      2
+Info: LANGEVIN DYNAMICS ACTIVE
+Info: LANGEVIN TEMPERATURE   277
+Info: LANGEVIN USING BBK INTEGRATOR
+Info: LANGEVIN DAMPING COEFFICIENT IS 5 INVERSE PS
+Info: LANGEVIN DYNAMICS NOT APPLIED TO HYDROGENS
+Info: LANGEVIN PISTON PRESSURE CONTROL ACTIVE
+Info:        TARGET PRESSURE IS 1.01325 BAR
+Info:     OSCILLATION PERIOD IS 200 FS
+Info:             DECAY TIME IS 100 FS
+Info:     PISTON TEMPERATURE IS 277 K
+Info:       PRESSURE CONTROL IS GROUP-BASED
+Info:    INITIAL STRAIN RATE IS -1.22255e-05 -1.22255e-05 -1.22255e-05
+Info:       CELL FLUCTUATION IS ISOTROPIC
+Info: PARTICLE MESH EWALD (PME) ACTIVE
+Info: PME TOLERANCE               1e-06
+Info: PME EWALD COEFFICIENT       0.257952
+Info: PME INTERPOLATION ORDER     6
+Info: PME GRID DIMENSIONS         90 90 90
+Info: PME MAXIMUM GRID SPACING    1.5
+Info: Attempting to read FFTW data from FFTW_NAMD_Git-2019-04-26_Linux-x86_64-multicore.txt
+Info: Optimizing 6 FFT steps.  1... 2... 3... 4... 5... 6...   Done.
+Info: Writing FFTW data to FFTW_NAMD_Git-2019-04-26_Linux-x86_64-multicore.txt
+Info: FULL ELECTROSTATIC EVALUATION FREQUENCY      1
+Info: USING VERLET I (r-RESPA) MTS SCHEME.
+Info: C1 SPLITTING OF LONG RANGE ELECTROSTATICS
+Info: PLACING ATOMS IN PATCHES BY HYDROGEN GROUPS
+Info: RIGID BONDS TO HYDROGEN : ALL
+Info:         ERROR TOLERANCE : 1e-08
+Info:          MAX ITERATIONS : 100
+Info: RIGID WATER USING SETTLE ALGORITHM
+Info: RANDOM NUMBER SEED     12345
+Info: USE HYDROGEN BONDS?    NO
+Info: COORDINATE PDB         step5_pbcsetup.pdb
+Info: STRUCTURE FILE         step5_pbcsetup.psf
+Info: PARAMETER file: CHARMM format! 
+Info: PARAMETERS             ../add_toppar/par_all36_prot.prm
+Info: PARAMETERS             ../add_toppar/par_all36_na.prm
+Info: PARAMETERS             ../add_toppar/par_all36_carb.prm
+Info: PARAMETERS             ../add_toppar/par_all36_lipid.prm
+Info: PARAMETERS             ../add_toppar/stream/prot/toppar_all36_prot_fluoro_alkanes.str
+Info: PARAMETERS             ../add_toppar/stream/prot/toppar_all36_prot_na_combined.str
+Info: PARAMETERS             ../add_toppar/toppar_water_ions_namd.str
+Info: PARAMETERS             ../add_toppar/par_all36_cgenff.prm
+Info: PARAMETERS             ../add_toppar/22u_lp_namd.str
+Info: USING ARITHMETIC MEAN TO COMBINE L-J SIGMA PARAMETERS
+Info: BINARY COORDINATES     ./results/2zc9.prod.0.restart.coor
+Info: FIRST TIMESTEP         20000
+Info: SKIPPING rtf SECTION IN STREAM FILE
+Info: SKIPPING rtf SECTION IN STREAM FILE
+Info: SKIPPING rtf SECTION IN STREAM FILE
+Info: SKIPPING rtf SECTION IN STREAM FILE
+Info: SUMMARY OF PARAMETERS:
+Info: 954 BONDS
+Info: 2781 ANGLES
+Info: 6804 DIHEDRAL
+Info: 196 IMPROPER
+Info: 6 CROSSTERM
+Info: 362 VDW
+Info: 9 VDW_PAIRS
+Info: 0 NBTHOLE_PAIRS
+Warning: Ignored 11941 bonds with zero force constants.
+Warning: Will get H-H distance in rigid H2O from H-O-H angle.
+Warning: CORRECTION OF ZERO MASS ATOMS TURNED OFF BECAUSE LONE PAIRS ARE USED
+Info: TIME FOR READING PSF FILE: 3.63782
+Info: Reading pdb file step5_pbcsetup.pdb
+Info: TIME FOR READING PDB FILE: 0.143719
+Info: 
+Info: LONG-RANGE LJ: APPLYING ANALYTICAL CORRECTIONS TO ENERGY AND PRESSURE
+Info: LONG-RANGE LJ: AVERAGE A AND B COEFFICIENTS 83050 AND 82.9175
+Info: ****************************
+Info: STRUCTURE SUMMARY:
+Info: 40539 ATOMS
+Info: 28647 BONDS
+Info: 20551 ANGLES
+Info: 12647 DIHEDRALS
+Info: 782 IMPROPERS
+Info: 284 CROSSTERMS
+Info: 0 EXCLUSIONS
+Info: 250 CONSTRAINTS
+Info: 38166 RIGID BONDS
+Info: 1 LONE PAIRS
+Info: 83448 DEGREES OF FREEDOM
+Info: 14313 HYDROGEN GROUPS
+Info: 4 ATOMS IN LARGEST HYDROGEN GROUP
+Info: 14311 MIGRATION GROUPS
+Info: 5 ATOMS IN LARGEST MIGRATION GROUP
+Info: TOTAL MASS = 249037 amu
+Info: TOTAL CHARGE = 3.95859e-06 e
+Info: MASS DENSITY = 1.06369 g/cm^3
+Info: ATOM DENSITY = 0.104272 atoms/A^3
+Info: *****************************
+Info: Reading from binary file ./results/2zc9.prod.0.restart.coor
+Info: 
+Info: Entering startup at 5.06848 s, 2117.09 MB of memory in use
+Info: Startup phase 0 took 0.000507116 s, 2117.09 MB of memory in use
+Info: ADDED 61606 IMPLICIT EXCLUSIONS
+Info: Startup phase 1 took 0.035013 s, 2120.07 MB of memory in use
+Info: NONBONDED TABLE R-SQUARED SPACING: 0.0625
+Info: NONBONDED TABLE SIZE: 769 POINTS
+Info: INCONSISTENCY IN FAST TABLE ENERGY VS FORCE: 0.000325096 AT 11.9556
+Info: INCONSISTENCY IN SCOR TABLE ENERGY VS FORCE: 0.000324844 AT 11.9556
+Info: ABSOLUTE IMPRECISION IN VDWA TABLE ENERGY: 4.59334e-32 AT 11.9974
+Info: RELATIVE IMPRECISION IN VDWA TABLE ENERGY: 7.4108e-17 AT 11.9974
+Info: INCONSISTENCY IN VDWA TABLE ENERGY VS FORCE: 0.0040507 AT 0.251946
+Info: ABSOLUTE IMPRECISION IN VDWB TABLE ENERGY: 1.53481e-26 AT 11.9974
+Info: RELATIVE IMPRECISION IN VDWB TABLE ENERGY: 7.96691e-18 AT 11.9974
+Info: INCONSISTENCY IN VDWB TABLE ENERGY VS FORCE: 0.00150189 AT 0.251946
+Info: Startup phase 2 took 0.011611 s, 2124.43 MB of memory in use
+Info: Startup phase 3 took 0.00235009 s, 2124.43 MB of memory in use
+Info: Startup phase 4 took 0.00565982 s, 2124.73 MB of memory in use
+Info: Startup phase 5 took 0.000332117 s, 2124.73 MB of memory in use
+Info: PATCH GRID IS 5 (PERIODIC) BY 2 (PERIODIC) BY 2 (PERIODIC)
+Info: PATCH GRID IS 2-AWAY BY 1-AWAY BY 1-AWAY
+Info: Reading from binary file ./results/2zc9.prod.0.restart.vel
+Info: REMOVING COM VELOCITY 0.000696208 -0.014609 -0.0245294
+Info: LARGEST PATCH (12) HAS 2087 ATOMS
+Info: TORUS A SIZE 1 USING 0
+Info: TORUS B SIZE 1 USING 0
+Info: TORUS C SIZE 1 USING 0
+Info: TORUS MINIMAL MESH SIZE IS 1 BY 1 BY 1
+Info: Placed 100% of base nodes on same physical node as patch
+Info: Startup phase 6 took 0.0230451 s, 2132.95 MB of memory in use
+Info: PME using 30 and 30 processors for FFT and reciprocal sum.
+Info: PME GRID LOCATIONS: 1 2 3 4 5 6 7 8 9 10 ...
+Info: PME TRANS LOCATIONS: 1 2 3 4 5 6 7 8 9 10 ...
+Info: PME USING 1 GRID NODES AND 1 TRANS NODES
+Info: Startup phase 7 took 0.0111778 s, 2132.95 MB of memory in use
+Info: Startup phase 8 took 0.000389099 s, 2132.95 MB of memory in use
+Info: Startup phase 9 took 0.00028801 s, 2132.95 MB of memory in use
+Info: Startup phase 10 took 0.000440121 s, 2132.95 MB of memory in use
+Info: Startup phase 11 took 0.00138688 s, 2132.95 MB of memory in use
+LDB: Central LB being created...
+Info: Startup phase 12 took 0.0227749 s, 2132.95 MB of memory in use
+Info: CREATING 700 COMPUTE OBJECTS
+Info: useSync: 0 useProxySync: 0
+Info: Startup phase 13 took 0.0870931 s, 2132.95 MB of memory in use
+Info: Startup phase 14 took 0.0480089 s, 2132.95 MB of memory in use
+Info: Startup phase 15 took 0.000841141 s, 2132.95 MB of memory in use
+Info: Finished startup at 5.31939 s, 2132.95 MB of memory in use
+
+ETITLE:      TS           BOND          ANGLE          DIHED          IMPRP               ELECT            VDW       BOUNDARY           MISC        KINETIC               TOTAL           TEMP      POTENTIAL         TOTAL3        TEMPAVG            PRESSURE      GPRESSURE         VOLUME       PRESSAVG      GPRESSAVG
+
+ENERGY:   20000       832.1747      2479.6002      2836.0783       123.2684        -147802.7373     11346.7823         5.2180         0.0000     22898.3271        -107281.2882       276.1711   -130179.6153   -107203.8074       276.1711            205.1104       203.2232    388782.7873       205.1104       203.2232
+
+WRITING EXTENDED SYSTEM TO OUTPUT FILE AT STEP 20000
+WRITING COORDINATES TO OUTPUT FILE AT STEP 20000
+COORDINATE DCD FILE ./results/2zc9.prod.1.dcd WAS NOT CREATED
+The last position output (seq=-2) takes 0.017 seconds, 2133.871 MB of memory in use
+WRITING VELOCITIES TO OUTPUT FILE AT STEP 20000
+The last velocity output (seq=-2) takes 0.014 seconds, 2134.801 MB of memory in use
+====================================================
+
+WallClock: 5.767190  CPUTime: 5.392337  Memory: 2134.800781 MB
+[Partition 0][Node 0] End of program

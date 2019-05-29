@@ -1,0 +1,88 @@
+
+Corrections to toppar_drude_lipid_2017a.str to yield toppar_drude_lipid_2017b.str and then 2017c.str
+
+1) missing O11-C1 BOND specification in POPC added.  Remaining residues checked.
+2) RESI DLPE missing.  Residue added to toppar_drude_lipid_2017b.str and test_drude_lipid_auto.str
+3) Omission of repeated PD1A LPD bond.
+4) Phosphate bond and angle parameters moved to master toppar
+
+corrections to toppar_drude_master_protein_2013e.str and additions yielding 
+toppar_drude_master_protein_2013f.str
+
+1) Addition of halogens and associated parameters
+
+2) Extend list of NBFIX values to all atom types of a given class.
+For example, NBFIX terms for ions with OD31A, but they have not been
+assigned to OD31B, C, D, E, F and G, though they should be.
+
+3) Corrections to SODD and MAGD NBFIX/NBTHOLE terms
+
+4) Corrected: PRES CT2 and CT2G nomenclature also inconsistent: HT1 and HT2 in C36, HTC1 and HTC2 in Drude
+      Not corrected: NMA nomenclature: C36 uses CR, HR1, HR2, HR3 and Drude uses CC, HC1, HC2, HC3 
+
+5) OD30D atom type (hydroxyl on neutral acid) changed to OD31F (in master and model toppar files).
+
+6) All phosphate bond and angle parameters moved to master. Nucleic
+acid and lipid specific dihedrals still in the respective toppar
+files.  Ultimate goal is to unify phosphodiester parameters when the
+next generation lipids are optimized.
+
+7) methylphoshate parameters added.
+
+creation of toppar_drude_model_2013f.str
+
+1) see 4 above
+
+2) addition of new halogen topology definitions and parameters.  tests
+added to test/test_drude_model_auto.str including tests of
+chlb/brob-protein model complexes.
+
+3) methylphosphate residues added. MP_0 (neutral methylphosphate) not
+optimized.  see Villa et al., JPCB, 2018.  tests added.
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+following from changes_2017.txt
+
+toppar_drude_model_2013e.str renamed to toppar_drude_model_2013d_2.str
+
+toppar_drude_model_2013f.str renamed to toppar_drude_model_2013e.str
+
+mv toppar_drude_lipid_2013b_to_2017.str toppar_drude_lipid_2017a.str: 
+   New Lipid force field of Hui et al.
+
+   Major issue was the use of the CD32AL atom type due to a change in the CD32A CD32A CD32A CD32A dihedral parameter.  This leads to the treatment of this dihedral in the long alkanes and Lysine sidechains being modified.  The new dihedral parameters from the lipids have now been transferred to the proteins and tested by Jing Huang.  The changes are not significant based on Lys dipeptide simulations and the new parameters will be used in both the lipids and nucleic acids).
+
+   Next generation lipids 
+      1) based on dispersion PME
+      2) will use nucleic acid phosphate model
+      3) Unification of alkane parameters (protein FF is using new alkane parameters)
+      4) consider unification of ester linkage model (residues MAS, MPRO etc)
+      
+
+New DNA parameters (Lemkul and MacKerell, JCTC, 2017, 10.1021/acs.jctc.7b00067 and 10.1021/acs.jctc.7b00068)
+
+   toppar_drude_nucleic_acid_2013e.str to toppar_drude_nucleic_acid_2017a.str
+   residues BDEO and BRIB in nucleic_acid file changed to BDEON and BRIBN due to conflict with carbohydrates.
+   RNA is NOT complete.
+
+Test case issues
+
+   Changes occurred in nucleic acids and carbohydrates.  Expected due
+   to the 2017 DNA update and changes in the hexapyranose parameters.
+
+   Some lipid model compounds to model test case. Additional residues add to lipid test case
+
+   Additional residues in model test case, including molecular ions
+
+Model compounds
+
+   New Imidazole parameters from Fang-Yu Lin NOT added: will be released with the new protein FF.
+
+   Alkenes from lipids to toppar_drude_model
+   Carbonyl (ketone,aldehyde) from carbohydrates to toppar_drude_model
+
+   Molecular ion atom types, residues and parameters added. 
+       Parameters need to be finalized.
+       Methylphosphates need additional optimization.
+
