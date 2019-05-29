@@ -1,4 +1,4 @@
-Tutorial for Ligand-Protein simulation  <br>
+# Tutorial for Ligand-Protein simulation  <br>
   This is a basic and simple tutorial to setup a ligand-protein system for NAMD simulation; all you need to do is to utilize the scripts obtained from CHARMM-GUI (whatever the system contains a halogenated ligand or not, the way to build up the system is the same).   <br>
   In this example, one of an easiest way to build the ligand-protein system will be introduced, that is:  <br>
   1) use CHARMM-GUI to build the protein, and then   <br>
@@ -18,7 +18,6 @@ Folders:  <br>
 Once the those files are generated from CHARMM-GUI, go to setup-system folder.  <br>
 
 # 1. Setup-system  <br>
-# ----------------------------------------  <br>
 The setup_system folder includes the following script <br>
 (these scripts are just minor adaptions from charmm-gui's additive scripts; the adaptions include adding "setup warn drude dmass 0.4", "coor sdrude", "coor shake" and change TIP3 to SWM4 these type of commands):  <br>
 step3.0_patch.inp  <br>
@@ -47,7 +46,6 @@ calc Zinit = @Lbox   <br>
 To setup systems, just run the above step3.0~step5.inp sequentially. Once the those files are prepared, go to run_namd folder.
 
 # 2. Run with NAMD   <br>
-# ----------------------------------------  <br>
 The step5_pbcsetup.psf and step5_pbcsetup.pdb generated from the setup-system will be used for NAMD.   <br>
 
 In run_namd folder, this includes two namd configuration files, which assigned the parameters used for NAMD: <br>
